@@ -1,5 +1,16 @@
 {
+  "name": "aquasense",
+  "version": "1.0.0",
+  "description": "aquasenseweb",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx nodemon index.js"
+  },
+  "author": "technote",
+  "license": "ISC",
   "dependencies": {
+    "ejs": "^3.1.10",
     "express": "^4.19.2",
     "express-session": "^1.18.0",
     "mongoose": "^8.3.4",
