@@ -1,14 +1,14 @@
 import user from "../models/User.js"
 import mongoose from "mongoose"
 
-const User = mongoose.Model("User", user)
+const User = mongoose.model("User", user)
 
 class UserService{
 
     // SELECIONAR TODOS OS USERS
     SelectAll() {
         const user = User.find()
-        return users
+        return user
     }
 
     // CADASTRAR NOVO USUÁRIO

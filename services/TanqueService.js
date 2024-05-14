@@ -1,13 +1,13 @@
 import tanque from "../models/Tanque.js"
 import mongoose from "mongoose"
 
-const Tanque = mongoose.Model("Tanque", tanque)
+const Tanque = mongoose.model("Tanque", tanque)
 
 class TanqueService {
     //Consultar todos os tanques
     SelectAll() {
         const tanque = Tanque.find()
-        return tanques
+        return tanque
     }
 
     // Cadastrar um Novo Tanque
@@ -21,7 +21,7 @@ class TanqueService {
 
     //EXCLUIR um Tanque
     Delete(nome) {
-        User.findByIdAndDelete(nome).then(() => {
+        Tanque.findByIdAndDelete(nome).then(() => {
             console.log(`Tanque com nome "${nome}" foi deletado do sistema.`)
         }).catch(err => {
             console.log(err)
@@ -30,7 +30,7 @@ class TanqueService {
 
     // ALTERAR
     Update(nome, capacidade) {
-        User.findByIdAndUpdate(nome, {
+        Tanque.findByIdAndUpdate(nome, {
             nome: nome,
             capacidade: capacidade
         }).then(() => {
