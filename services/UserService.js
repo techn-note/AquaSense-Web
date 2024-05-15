@@ -4,7 +4,6 @@ import mongoose from "mongoose"
 const User = mongoose.model("User", user)
 
 class UserService {
-
     // SELECIONAR TODOS OS USERS
     async selectAll() {
         const user = User.find()

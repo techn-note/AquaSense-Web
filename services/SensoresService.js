@@ -1,18 +1,18 @@
-import Sensores from "../models/Sensores.js";
+import sensores from "../models/Sensores.js";
 import mongoose from "mongoose";
 
-const SensoresModel = mongoose.model("Sensores", Sensores);
+const Sensores = mongoose.model("Sensores", sensores);
 
 class SensoresService {
     // Consultar todos os sensores
     async selectAll() {
-        const sensores = await SensoresModel.find();
+        const sensores = await Sensores.find();
         return sensores;
     }
 
     // Cadastrar um novo dado do sensor
     create(tipo, data, valor) {
-        const newSensores = new SensoresModel({
+        const newSensores = new Sensores({
             tipo: tipo,
             data: data,
             valor: valor
@@ -22,7 +22,7 @@ class SensoresService {
 
     // Selecionar sensores por tipo
     async selectByType(tipo) {
-        const sensores = await SensoresModel.find({ tipo: tipo });
+        const sensores = await Sensores.find({ tipo: tipo });
         return sensores;
     }
 }
