@@ -1,7 +1,7 @@
-import peixe from "../models/Sensores.js";
-import mongoose from "mongoose";
+import peixe from "../models/Peixe.js"
+import mongoose from "mongoose"
 
-const Peixe = mongoose.model("Sensores", peixe);
+const Peixe = mongoose.model("Sensores", peixe)
 
 class PeixeService {
     // Consultar todos os peixes

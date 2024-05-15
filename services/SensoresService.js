@@ -1,7 +1,7 @@
-import sensores from "../models/Sensores.js";
-import mongoose from "mongoose";
+import sensores from "../models/Sensores.js"
+import mongoose from "mongoose"
 
-const Sensores = mongoose.model("Sensores", sensores);
+const Sensores = mongoose.model("Sensores", sensores)
 
 class SensoresService {
     // Consultar todos os sensores
