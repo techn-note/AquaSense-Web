@@ -1,3 +1,88 @@
+:root {
+  --primary-color: #003DA5
+}
+
+header {
+  background-color: var(--primary-color);
+  height: 85vh;
+}
+
+.navbar{
+  align-content: flex-start;
+  gap: 25px;
+}
+
+/* Estilo geral para seções */
+section {
+  padding: 30px; /* Ajuste o espaçamento interno das seções */
+}
+
+/* 1ª Seção - Imagem à esquerda, Texto à direita */
+.section-1 {
+  display: flex; /* Ativa layout flexbox */
+  align-items: center; /* Alinha itens verticalmente no centro */
+  gap: 15px;
+  flex-direction: row-reverse;
+}
+
+.section-1 p {
+  flex: 1; /* Permite que o texto ocupe o espaço restante */
+}
+
+/* 2ª Seção - Background cinza, Texto à esquerda, Imagem à direita */
+.section-2 {
+  background-color: #f2f2f2; /* Cor de fundo cinza */
+  display: flex;
+  align-items: center;
+}
+
+.section-2 p {
+  flex: 1;
+}
+
+/* 3ª Seção - Imagem à esquerda, Texto à direita */
+.section-3 {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+}
+
+.section-3 p {
+  flex: 1;
+}
+
+/* 4ª Seção - Background cinza, Texto sobre a imagem */
+.section-4 {
+  display: flex;
+  background-color: #f2f2f2;
+  position: relative; /* Permite posicionamento relativo */
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-4 img {
+  width: 100%; /* Imagem ocupa toda a largura da seção */
+  height: auto; /* Mantém a proporção da imagem */
+}
+
+
+/* 5ª Seção - Texto acima do botão */
+.section-5 {
+  display: flex;
+  justify-content: center;
+  text-align: center; /* Alinha o texto no centro */
+}
+
+.section-5 p {
+  margin-bottom: 20px; /* Espaçamento abaixo do texto */
+}
+
+/* Estilos adicionais para botões */
+.btn {
+  padding: 10px 20px; /* Ajuste o padding do botão */
+  font-size: 16px; /* Ajuste o tamanho da fonte do botão */
+}
+
 .site-footer
 {
   background-color:#26272b;
