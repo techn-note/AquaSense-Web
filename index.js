@@ -2,6 +2,8 @@ import express from "express"
 import mongoose from "mongoose"
 import session from "express-session"
 
+import UsersController from "./controllers/UsersController.js"
+
 const app = express()
 
 app.use(session({
@@ -19,6 +21,8 @@ mongoose.connect("mongodb://localhost:27017/aquasense")
 app.set("view engine", "ejs")
 
 app.use(express.static('public'))
+
+app.use("/", UsersController)
 
 app.get("/", function(req, res) {
     res.render("index")

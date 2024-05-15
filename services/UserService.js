@@ -4,25 +4,25 @@ import mongoose from "mongoose"
 const User = mongoose.model("User", user)
 
 class UserService {
-    // SELECIONAR TODOS OS USERS
-    async selectAll() {
-        const user = User.find()
-        return user
-    }
 
     // CADASTRAR NOVO USUÁRIO
-    Create(nome, email, senha) {
+    Create(nome, email, password) {
         const newUser = new User({
             nome: nome,
             email: email,
-            senha: senha
+            password: password
         })
         newUser.save()
     }
 
+    SelectOne(email) {
+        const user = User.findOne({email: email})
+        return user
+    }
+
     // SELECIONAR APENAS O NOME PARA TELA DE INÍCIO
-    async selectOne(email) {
-        const user = await User.findOne({ email });
+    selectName(email) {
+        const user = User.findOne({ email });
         if (user) {
             return user.nome;
         } else {
