@@ -5,7 +5,7 @@ const Tanque = mongoose.model("Tanque", tanque)
 
 class TanqueService {
     //Consultar todos os tanques
-    SelectAll() {
+    async selectAll() {
         const tanque = Tanque.find()
         return tanque
     }

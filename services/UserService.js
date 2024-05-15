@@ -3,10 +3,10 @@ import mongoose from "mongoose"
 
 const User = mongoose.model("User", user)
 
-class UserService{
+class UserService {
 
     // SELECIONAR TODOS OS USERS
-    SelectAll() {
+    async selectAll() {
         const user = User.find()
         return user
     }
@@ -14,25 +14,28 @@ class UserService{
     // CADASTRAR NOVO USUÁRIO
     Create(nome, email, senha) {
         const newUser = new User({
-            nome : nome,
-            email : email,
-            senha : senha
+            nome: nome,
+            email: email,
+            senha: senha
         })
         newUser.save()
     }
 
     // SELECIONAR APENAS O NOME PARA TELA DE INÍCIO
-    selectOne(email) {
-        const user = User.findOne({
-            nome : nome
-        })
-        return user
+    async selectOne(email) {
+        const user = await User.findOne({ email });
+        if (user) {
+            return user.nome;
+        } else {
+            return null;
+        }
     }
+
 
     //EXCLUIR um USER
     Delete(email) {
         User.findByIdAndDelete(email).then(() => {
-        console.log(`Usuário com email "${email}" foi deletado do sistema.`)
+            console.log(`Usuário com email "${email}" foi deletado do sistema.`)
         }).catch(err => {
             console.log(err)
         })
