@@ -9,7 +9,10 @@ header {
 
 .navbar{
   align-content: flex-start;
-  gap: 25px;
+}
+
+.container__main {
+  align-self: center;
 }
 
 /* Estilo geral para seções */
@@ -239,6 +242,24 @@ section {
 }
 @media (max-width:767px)
 {
+
+  .section-1 {
+    flex-direction: column;
+  }
+  .section-2 {
+    flex-direction: column-reverse;
+  }
+  .section-3 {
+    flex-direction: column;
+  }
+  .section-4 {
+    flex-direction: column-reverse;
+  }
+
+  .image__header {
+    display: none;
+  }
+
   .social-icons li.title
   {
     display:block;
