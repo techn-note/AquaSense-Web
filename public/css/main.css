@@ -1,13 +1,19 @@
 :root {
-  --primary-color: #003DA5
+  --cor-primaria: #003DA5; 
+  --cinza-claro: #f2f2f2; 
+  --cinza-escuro: #26272b; 
+  --branco: #fff; 
+  --cinza-texto: #737373; 
+  --verde-link: #3366cc; 
 }
 
+/* Cabeçalho */
 header {
-  background-color: var(--primary-color);
+  background-color: var(--cor-primaria);
   height: 85vh;
 }
 
-.navbar{
+.navbar {
   align-content: flex-start;
 }
 
@@ -15,26 +21,26 @@ header {
   align-self: center;
 }
 
-/* Estilo geral para seções */
+/* Seções */
 section {
-  padding: 30px; /* Ajuste o espaçamento interno das seções */
+  padding: 30px;
 }
 
 /* 1ª Seção - Imagem à esquerda, Texto à direita */
 .section-1 {
-  display: flex; /* Ativa layout flexbox */
-  align-items: center; /* Alinha itens verticalmente no centro */
+  display: flex;
+  align-items: center;
   gap: 15px;
   flex-direction: row-reverse;
 }
 
 .section-1 p {
-  flex: 1; /* Permite que o texto ocupe o espaço restante */
+  flex: 1;
 }
 
 /* 2ª Seção - Background cinza, Texto à esquerda, Imagem à direita */
 .section-2 {
-  background-color: #f2f2f2; /* Cor de fundo cinza */
+  background-color: var(--cinza-claro);
   display: flex;
   align-items: center;
 }
@@ -57,97 +63,97 @@ section {
 /* 4ª Seção - Background cinza, Texto sobre a imagem */
 .section-4 {
   display: flex;
-  background-color: #f2f2f2;
-  position: relative; /* Permite posicionamento relativo */
+  background-color: var(--cinza-claro);
+  position: relative;
   flex-direction: column;
   align-items: center;
 }
 
 .section-4 img {
-  width: 100%; /* Imagem ocupa toda a largura da seção */
-  height: auto; /* Mantém a proporção da imagem */
+  width: 100%;
+  height: auto;
 }
-
 
 /* 5ª Seção - Texto acima do botão */
 .section-5 {
   display: flex;
   justify-content: center;
-  text-align: center; /* Alinha o texto no centro */
+  text-align: center;
 }
 
 .section-5 p {
-  margin-bottom: 20px; /* Espaçamento abaixo do texto */
+  margin-bottom: 20px;
 }
 
-/* Estilos adicionais para botões */
+/* Estilos para botões */
 .btn {
-  padding: 10px 20px; /* Ajuste o padding do botão */
-  font-size: 16px; /* Ajuste o tamanho da fonte do botão */
+  padding: 10px 20px; 
+  font-size: 16px; 
 }
 
-.site-footer
-{
-  background-color:#26272b;
-  padding:45px 0 20px;
-  font-size:15px;
-  line-height:24px;
-  color:#737373;
+/* Rodapé */
+.site-footer {
+  background-color: var(--cinza-escuro);
+  padding: 45px 0 20px;
+  font-size: 15px;
+  line-height: 24px;
+  color: var(--cinza-texto);
 }
-.site-footer hr
-{
-  border-top-color:#bbb;
-  opacity:0.5
+
+.site-footer hr {
+  border-top-color: var(--cinza-claro);
+  opacity: 0.5;
 }
-.site-footer hr.small
-{
-  margin:20px 0
+
+.site-footer hr.small {
+  margin: 20px 0;
 }
-.site-footer h6
-{
-  color:#fff;
-  font-size:16px;
-  text-transform:uppercase;
-  margin-top:5px;
-  letter-spacing:2px
+
+.site-footer h6 {
+  color: var(--branco);
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-top: 5px;
+  letter-spacing: 2px;
 }
-.site-footer a
-{
-  color:#737373;
+
+.site-footer a {
+  color: var(--cinza-texto);
 }
-.site-footer a:hover
-{
-  color:#3366cc;
-  text-decoration:none;
+
+.site-footer a:hover {
+  color: var(--verde-link);
+  text-decoration: none;
 }
-.footer-links
-{
-  padding-left:0;
-  list-style:none
+
+.footer-links {
+  padding-left: 0;
+  list-style: none;
 }
-.footer-links li
-{
-  display:block
+
+.footer-links li {
+  display: block;
 }
-.footer-links a
-{
-  color:#737373
+
+.footer-links a {
+  color: var(--cinza-texto);
 }
-.footer-links a:active,.footer-links a:focus,.footer-links a:hover
-{
-  color:#3366cc;
-  text-decoration:none;
+
+.footer-links a:active,
+.footer-links a:focus,
+.footer-links a:hover {
+  color: var(--verde-link);
+  text-decoration: none;
 }
-.footer-links.inline li
-{
+
+.footer-links.inline li {
   display:inline-block
 }
-.site-footer .social-icons
-{
+.site-footer .social-icons {
   text-align:right
 }
-.site-footer .social-icons a
-{
+
+.site-footer .social-icons a {
   width:40px;
   height:40px;
   line-height:40px;
@@ -156,48 +162,29 @@ section {
   border-radius:100%;
   background-color:#33353d
 }
-.copyright-text
-{
+
+.copyright-text {
   margin:0
 }
-@media (max-width:991px)
-{
-  .site-footer [class^=col-]
-  {
-    margin-bottom:30px
-  }
-}
-@media (max-width:767px)
-{
-  .site-footer
-  {
-    padding-bottom:0
-  }
-  .site-footer .copyright-text,.site-footer .social-icons
-  {
-    text-align:center
-  }
-}
-.social-icons
-{
+
+.social-icons {
   padding-left:0;
   margin-bottom:0;
   list-style:none
 }
-.social-icons li
-{
+.social-icons li {
   display:inline-block;
   margin-bottom:4px
 }
-.social-icons li.title
-{
+.social-icons li.title {
   margin-right:15px;
   text-transform:uppercase;
   color:#96a2b2;
   font-weight:700;
   font-size:13px
 }
-.social-icons a{
+
+.social-icons a {
   background-color:#eceeef;
   color:#818a91;
   font-size:16px;
@@ -212,46 +199,61 @@ section {
   -o-transition:all .2s linear;
   transition:all .2s linear
 }
-.social-icons a:active,.social-icons a:focus,.social-icons a:hover
-{
+.social-icons a:active,.social-icons a:focus,.social-icons a:hover {
   color:#fff;
   background-color:#29aafe
 }
-.social-icons.size-sm a
-{
+.social-icons.size-sm a {
   line-height:34px;
   height:34px;
   width:34px;
   font-size:14px
 }
-.social-icons a.facebook:hover
-{
+.social-icons a.facebook:hover {
   background-color:#3b5998
 }
-.social-icons a.twitter:hover
-{
+.social-icons a.twitter:hover {
   background-color:#00aced
 }
-.social-icons a.linkedin:hover
-{
+.social-icons a.linkedin:hover {
   background-color:#007bb6
 }
-.social-icons a.dribbble:hover
-{
+.social-icons a.dribbble:hover {
   background-color:#ea4c89
 }
-@media (max-width:767px)
-{
 
+/*  Media*/
+
+@media (max-width: 991px) {
+  .site-footer [class^="col-"] {
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .site-footer {
+    padding-bottom: 0;
+  }
+
+  .site-footer .copyright-text,
+  .site-footer .social-icons {
+    text-align: center;
+  }
+}
+
+@media (max-width: 767px) {
   .section-1 {
     flex-direction: column;
   }
+
   .section-2 {
     flex-direction: column-reverse;
   }
+
   .section-3 {
     flex-direction: column;
   }
+
   .section-4 {
     flex-direction: column-reverse;
   }
@@ -260,10 +262,9 @@ section {
     display: none;
   }
 
-  .social-icons li.title
-  {
-    display:block;
-    margin-right:0;
-    font-weight:600
+  .social-icons li.title {
+    display: block;
+    margin-right: 0;
+    font-weight: 600;
   }
 }
