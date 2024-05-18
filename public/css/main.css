@@ -5,16 +5,16 @@
   --branco: #fff; 
   --cinza-texto: #737373; 
   --verde-link: #3366cc; 
+  --base-font-size: 16px
+}
+
+html {
+  font-size: var(--base-font-size)
 }
 
 /* Cabeçalho */
-header {
+header.header {
   background-color: var(--cor-primaria);
-  height: 85vh;
-}
-
-.navbar {
-  align-content: flex-start;
 }
 
 .container__main {
@@ -22,80 +22,53 @@ header {
 }
 
 /* Seções */
-section {
+section.section {
   padding: 30px;
 }
 
-/* 1ª Seção - Imagem à esquerda, Texto à direita */
-.section-1 {
+.section-1, .section-2,.section-3, .section-4, .section-5 {
   display: flex;
   align-items: center;
+  justify-content: center;
+  text-align: center;
   gap: 15px;
-  flex-direction: row-reverse;
 }
 
-.section-1 p {
-  flex: 1;
-}
-
-/* 2ª Seção - Background cinza, Texto à esquerda, Imagem à direita */
-.section-2 {
-  background-color: var(--cinza-claro);
-  display: flex;
-  align-items: center;
-}
-
-.section-2 p {
-  flex: 1;
-}
-
-/* 3ª Seção - Imagem à esquerda, Texto à direita */
-.section-3 {
-  display: flex;
-  align-items: center;
-  flex-direction: row-reverse;
-}
-
-.section-3 p {
-  flex: 1;
-}
-
-/* 4ª Seção - Background cinza, Texto sobre a imagem */
-.section-4 {
-  display: flex;
-  background-color: var(--cinza-claro);
-  position: relative;
-  flex-direction: column;
-  align-items: center;
-}
-
-.section-4 img {
+.section-5 img, .section-4 img, .section-3 img, .section-2 img, .section-1 img {
   width: 100%;
   height: auto;
 }
 
-/* 5ª Seção - Texto acima do botão */
-.section-5 {
-  display: flex;
-  justify-content: center;
-  text-align: center;
+.section-2 p,
+.section-3 p,
+.section-4 p {
+  flex: 1;
 }
 
-.section-5 p {
-  margin-bottom: 20px;
+.section-1, .section-3 {
+  flex-direction: row-reverse;
 }
 
-/* Estilos para botões */
+.section-2 {
+  background-color: var(--cinza-claro);
+}
+
+.section-4 {
+  background-color: var(--cinza-claro);
+  position: relative;
+  flex-direction: column;
+}
+
 .btn {
   padding: 10px 20px; 
-  font-size: 16px; 
+  font-size: 1rem; 
 }
 
 /* Rodapé */
 .site-footer {
   background-color: var(--cinza-escuro);
   padding: 45px 0 20px;
-  font-size: 15px;
+  font-size: 0.9375rem;
   line-height: 24px;
   color: var(--cinza-texto);
 }
@@ -111,7 +84,7 @@ section {
 
 .site-footer h6 {
   color: var(--branco);
-  font-size: 16px;
+  font-size: 1rem;
   text-transform: uppercase;
   margin-top: 5px;
   letter-spacing: 2px;
@@ -119,11 +92,10 @@ section {
 
 .site-footer a {
   color: var(--cinza-texto);
-}
-
-.site-footer a:hover {
-  color: var(--verde-link);
-  text-decoration: none;
+  &:hover {
+    color: var(--verde-link);
+    text-decoration: none;
+  }
 }
 
 .footer-links {
@@ -160,7 +132,7 @@ section {
   margin-left:6px;
   margin-right:0;
   border-radius:100%;
-  background-color:#33353d
+  background-color: var(--cinza-escuro)
 }
 
 .copyright-text {
@@ -181,13 +153,13 @@ section {
   text-transform:uppercase;
   color:#96a2b2;
   font-weight:700;
-  font-size:13px
+  font-size: 0.8125rem
 }
 
 .social-icons a {
   background-color:#eceeef;
   color:#818a91;
-  font-size:16px;
+  font-size: 1rem;
   display:inline-block;
   line-height:44px;
   width:44px;
@@ -197,17 +169,18 @@ section {
   border-radius:100%;
   -webkit-transition:all .2s linear;
   -o-transition:all .2s linear;
-  transition:all .2s linear
+  transition:all .2s linear;
+  &:active, &:focus, &:hover {
+    color:#fff;
+    background-color:#29aafe
+  } 
 }
-.social-icons a:active,.social-icons a:focus,.social-icons a:hover {
-  color:#fff;
-  background-color:#29aafe
-}
+
 .social-icons.size-sm a {
   line-height:34px;
   height:34px;
   width:34px;
-  font-size:14px
+  font-size: 0.875rem
 }
 .social-icons a.facebook:hover {
   background-color:#3b5998
@@ -242,23 +215,15 @@ section {
 }
 
 @media (max-width: 767px) {
-  .section-1 {
+  .section-1, .section-3 {
     flex-direction: column;
   }
 
-  .section-2 {
+  .section-2, .section-4 {
     flex-direction: column-reverse;
   }
 
-  .section-3 {
-    flex-direction: column;
-  }
-
-  .section-4 {
-    flex-direction: column-reverse;
-  }
-
-  .image__header {
+  .image__header, #btn__nav {
     display: none;
   }
 
