@@ -1,16 +1,3 @@
-:root {
-  --cor-primaria: #003DA5; 
-  --cinza-claro: #f2f2f2; 
-  --cinza-escuro: #26272b; 
-  --branco: #fff; 
-  --cinza-texto: #737373; 
-  --verde-link: #3366cc; 
-  --base-font-size: 16px
-}
-
-html {
-  font-size: var(--base-font-size)
-}
 
 /* Cabeçalho */
 header.header {

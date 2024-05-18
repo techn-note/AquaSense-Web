@@ -1,0 +1,27 @@
+div.all {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+
+/* @media (min-width: 600px) {
+   
+}
+
+@media (min-width: 840px) {
+    
+}
+
+@media (min-width: 960px) {
+    
+}
+
+@media (min-width: 1240px) {
+    
+}
+
+@media (min-width: 1600px) {
+    
+} */
