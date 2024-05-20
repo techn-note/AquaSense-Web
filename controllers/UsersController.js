@@ -53,7 +53,8 @@ router.post("/createUser", (req, res) => {
                 if (correct) {
                     req.session.user = {
                         id: user._id,
-                        email: user.email
+                        email: user.email,
+                        nome: user.nome
                     }
                     res.redirect("/home")
                 } else {
