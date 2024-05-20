@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h1>Bem-vindo, Teste!</h1>
+
+    <h2>Sensores</h2>
+    <ul>
+        <li>Temperatura: <%= temperatura ? temperatura.valor : 'N/A' %></li>
+        <li>Amônia: <%= amonia ? amonia.valor : 'N/A' %></li>
+        <li>Oxigenação: <%= oxigenacao ? oxigenacao.valor : 'N/A' %></li>
+        <li>pH: <%= ph ? ph.valor : 'N/A' %></li>
+    </ul>
+</body>
+</html>

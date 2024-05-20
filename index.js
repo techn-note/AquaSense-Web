@@ -3,6 +3,7 @@ import mongoose from "mongoose"
 import session from "express-session"
 
 import UsersController from "./controllers/UsersController.js"
+import HomeController from "./controllers/HomeController.js"
 
 const app = express()
 
@@ -28,6 +29,7 @@ app.set("view engine", "ejs")
 app.use(express.static('public'))
 
 app.use("/", UsersController)
+app.use("/", HomeController)
 
 app.get("/", function(req, res) {
     res.render("index")
