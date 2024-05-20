@@ -55,7 +55,7 @@ router.post("/createUser", (req, res) => {
                         id: user._id,
                         email: user.email
                     }
-                    res.redirect("/")
+                    res.redirect("/home")
                 } else {
                     res.send(`Senha inválida!
           <br><a href="/login">Tentar novamente.</a>`)
