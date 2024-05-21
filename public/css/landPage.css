@@ -10,15 +10,18 @@ header.header {
 
 /* Seções */
 section.section {
-  padding: 30px;
+  padding: 0 15rem;
 }
 
 .section-1, .section-2,.section-3, .section-4, .section-5 {
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
   gap: 15px;
+}
+
+section.section-1, section.section-2, section.section-4 {
+  padding: 5rem 15rem;
 }
 
 .section-5 img, .section-4 img, .section-3 img, .section-2 img, .section-1 img {
@@ -36,14 +39,23 @@ section.section {
   flex-direction: row-reverse;
 }
 
-.section-2 {
+section.section-2 {
   background-color: var(--cinza-claro);
 }
 
-.section-4 {
+section.section-4 {
   background-color: var(--cinza-claro);
   position: relative;
   flex-direction: column;
+}
+
+.section__button {
+  width: 80vw;
+  display: flex;
+  gap: 2rem;
+  height: 15rem;
+  justify-content: center;
+  align-items: center;
 }
 
 .btn {
