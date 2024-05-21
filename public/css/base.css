@@ -1,13 +1,38 @@
 :root {
   --cor-primaria: #003da5;
+  --cor-secundaria: #003da5;
   --cinza-claro: #f2f2f2;
   --cinza-escuro: #26272b;
   --branco: #fff;
   --cinza-texto: #737373;
   --verde-link: #3366cc;
   --base-font-size: 16px;
+  --estilo-fonte: "Outfit";
+  --font-size-strong: bold;
+  --font-size-thin: 300;
 }
 
 html {
   font-size: var(--base-font-size);
+}
+
+body {
+  font-family: var(--estilo-fonte);
+}
+
+p {
+  color: var(--cor-texto-primario);
+  font-size: 1rem;
+}
+
+h1 {
+  font-size: 2.25rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+}
+
+h3 {
+  font-size: 1.5rem;
 }

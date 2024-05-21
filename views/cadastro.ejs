@@ -1,11 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Foi</h1>
-</body>
-</html>
+<%- include ("partials/head.ejs") %>
+<div class="container login-container">
+  <div class="login-image">
+    <img class="img" src="imgs/image-logo.svg" alt="Logo" />
+  </div>
+  <div class="bars">
+    <img src="imgs/image-bars.svg" alt="">
+  </div>
+  <div class="row col col-lg-2 login-form">
+    <h2 class="login-form__title">Se Cadastrar</h2> <form>
+      <div class="form-group form-control-lg">
+        <label for="name">Nome</label>
+        <input
+          type="name"
+          class="form-control form-control-lg"
+          id="name"
+          placeholder="Digite seu nome"
+        />
+      </div>
+      <div class="form-group form-control-lg">
+        <label for="email">E-mail</label>
+        <input
+          type="email"
+          class="form-control form-control-lg"
+          id="email"
+          placeholder="Digite seu e-mail"
+        />
+      </div>
+      <div class="form-group form-control-lg">
+        <label for="password">Senha</label>
+        <input
+          type="password"
+          class="form-control form-control-lg"
+          id="password"
+          placeholder="Digite sua senha"
+        />
+      </div>
+      <div class="navbar">
+        <div class="create-account">
+          <a href="#">Fazer login</a>
+        </div>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+      </div>
+    </form>
+    <p>Seus dados estão seguros. Seguimos a <a href="">LGPD</a> para coletá-los e tratá-los.</p>
+  </div>
+</div>
+
+
+<%- include ("partials/foot.ejs") %>

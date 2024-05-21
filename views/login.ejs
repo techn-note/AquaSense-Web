@@ -1,38 +1,42 @@
 <%- include ("partials/head.ejs") %>
-<div class="all">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 mx-auto">
-        <img src="imgs/image-logo-footer.svg" alt="">
+<div class="container login-container">
+  <div class="login-image">
+    <img class="img" src="imgs/image-logo.svg" alt="Logo" />
+  </div>
+  <div class="bars">
+    <img src="imgs/image-bars.svg" alt="">
+  </div>
+  <div class="row col col-lg-2 login-form">
+    <h2 class="login-form__title">Fazer login</h2> <form>
+      <p>Bem-vindo ao nosso DashSense!, aqui demonstraremos nosso melhor pelo seu cultivo!</p>
+      <div class="form-group form-control-lg">
+        <label for="email">E-mail</label>
+        <input
+          type="email"
+          class="form-control form-control-lg"
+          id="email"
+          placeholder="Digite seu e-mail"
+        />
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6 mx-auto">
-        <h1 class="">Login</h1>
-        <form>
-          <div class="mb-3">
-            <label for="email" class="form-label">E-mail</label>
-            <input
-              type="email"
-              class="form-control"
-              id="email"
-              aria-describedby="emailHelp"
-            />
-            <div id="emailHelp" class="form-text">
-              Nunca compartilharemos seu e-mail com ninguém.
-            </div>
-          </div>
-          <div class="mb-3">
-            <label for="password" class="form-label">Senha</label>
-            <input type="password" class="form-control" id="password" />
-          </div>
-          <div class="d-grid gap-2">
-            <button type="submit" class="btn btn-primary btn-lg">Entrar</button>
-            <a href="#" class="btn btn-outiline-link ">Criar conta</a>
-          </div>
-        </form>
+      <div class="form-group form-control-lg">
+        <label for="password">Senha</label>
+        <input
+          type="password"
+          class="form-control form-control-lg"
+          id="password"
+          placeholder="Digite sua senha"
+        />
       </div>
-    </div>
+      <div class="navbar">
+        <div class="create-account">
+          <a href="#">Criar conta</a>
+        </div>
+        <button type="submit" class="btn btn-primary">Entrar</button>
+      </div>
+    </form>
+    <p>Seus dados estão seguros. Seguimos a <a href="">LGPD</a> para coletá-los e tratá-los.</p>
   </div>
 </div>
+
+
 <%- include ("partials/foot.ejs") %>
