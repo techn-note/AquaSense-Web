@@ -6,9 +6,9 @@ const User = mongoose.model("User", user)
 class UserService {
 
     // CADASTRAR NOVO USUÁRIO
-    Create(nome, email, password) {
+    Create(name, email, password) {
         const newUser = new User({
-            nome: nome,
+            nome: name,
             email: email,
             password: password
         })

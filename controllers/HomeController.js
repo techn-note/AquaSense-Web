@@ -3,7 +3,7 @@ const router = express.Router()
 import SensoresService from "../services/SensoresService.js"
 import Auth from "../middleware/Auth.js"
 
-router.get("/home", async (req, res) => {
+router.get('/home', Auth, async (req, res) => {
     try {
         const [tempSensor, amoniaSensor, oxigenacaoSensor, phSensor, volumeSensor] = await Promise.all([
             SensoresService.selectTemp(),

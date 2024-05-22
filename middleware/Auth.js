@@ -1,10 +1,11 @@
 function Auth(req, res, next) {
     if(req.session.user != undefined){
         next()
-    }else{
+    } else {
         res.render("login", {
-            loggedOut : true
+            loggedOut: true
         })
     }
 }
+
 export default Auth

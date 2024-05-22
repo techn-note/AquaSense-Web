@@ -4,6 +4,7 @@ import session from "express-session"
 
 import UsersController from "./controllers/UsersController.js"
 import HomeController from "./controllers/HomeController.js"
+import Auth from "./middleware/Auth.js"
 
 const app = express()
 
