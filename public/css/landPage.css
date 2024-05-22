@@ -47,6 +47,7 @@ section.section-4 {
   background-color: var(--cinza-claro);
   position: relative;
   flex-direction: column;
+  text-align: center;
 }
 
 .section__button {
@@ -181,17 +182,9 @@ section.section-4 {
   width:34px;
   font-size: 0.875rem
 }
-.social-icons a.facebook:hover {
-  background-color:#3b5998
-}
-.social-icons a.twitter:hover {
-  background-color:#00aced
-}
-.social-icons a.linkedin:hover {
-  background-color:#007bb6
-}
-.social-icons a.dribbble:hover {
-  background-color:#ea4c89
+
+.social-icons a.github:hover {
+  background-color:#8c43c8
 }
 
 /*  Media*/
