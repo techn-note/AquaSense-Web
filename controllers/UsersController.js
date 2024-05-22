@@ -21,17 +21,16 @@ router.get("/cadastro", (req, res) => {
 // ROTA DE CRIAÇÃO DE USUÁRIO NO BANCO
 router.post("/createUser", (req, res) => {
 
-    const nome = req.body.nome
+    const name = req.body.name
     const email = req.body.email
     const password = req.body.password
 
     UserService.SelectOne(email).then(user => {
 
         if (user == undefined) {
-
             const salt = bcrypt.genSaltSync(10)
             const hash = bcrypt.hashSync(password, salt)
-            UserService.Create(email, hash)
+            UserService.Create(name, email, hash)
             res.redirect("/login")
 
         } else {
@@ -40,32 +39,34 @@ router.post("/createUser", (req, res) => {
         }
     })
 
-    // ROTA DE AUTENTICAÇÃO
-    router.post("/authenticate", (req, res) => {
-        const email = req.body.email
-        const password = req.body.password
 
-        UserService.SelectOne(email).then(user => {
+})
 
-            if (user != undefined) {
-                const correct = bcrypt.compareSync(password, user.password)
+// ROTA DE AUTENTICAÇÃO
+router.post("/authenticate", (req, res) => {
+    const email = req.body.email
+    const password = req.body.password
 
-                if (correct) {
-                    req.session.user = {
-                        id: user._id,
-                        email: user.email,
-                        nome: user.nome
-                    }
-                    res.redirect("/home")
-                } else {
-                    res.send(`Senha inválida!
-          <br><a href="/login">Tentar novamente.</a>`)
+    UserService.SelectOne(email).then(user => {
+
+        if (user != undefined) {
+            const correct = bcrypt.compareSync(password, user.password)
+
+            if (correct) {
+                req.session.user = {
+                    id: user._id,
+                    email: user.email,
+                    name: user.nome
                 }
+                res.redirect("/home")
             } else {
-                res.send(`Usuário não existe.
-        <br><a href="/login">Tentar novamente.</a>`)
+                res.send(`Senha inválida!
+          <br><a href="/login">Tentar novamente.</a>`)
             }
-        })
+        } else {
+            res.send(`Usuário não existe.
+        <br><a href="/login">Tentar novamente.</a>`)
+        }
     })
 })
 
