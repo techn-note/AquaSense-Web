@@ -7,13 +7,14 @@
 </head>
 <body>
     <h1>Bem-vindo, Teste!</h1>
-
+    <li>Usuário: <%= user ? user.name : 'N/A' %></li>
     <h2>Sensores</h2>
     <ul>
         <li>Temperatura: <%= temperatura ? temperatura.valor : 'N/A' %></li>
         <li>Amônia: <%= amonia ? amonia.valor : 'N/A' %></li>
         <li>Oxigenação: <%= oxigenacao ? oxigenacao.valor : 'N/A' %></li>
         <li>pH: <%= ph ? ph.valor : 'N/A' %></li>
+        <li>volume: <%= volume ? volume.valor : 'N/A' %></li>
     </ul>
 </body>
 </html>
