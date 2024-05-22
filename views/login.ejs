@@ -7,6 +7,13 @@
       <img src="imgs/image-bars.svg" alt="">
     </div>
     <div class="row col col-lg-2 login-form">
+
+      <% if (messages.danger) { %>
+        <div class="alert alert-danger">
+            <%= messages.danger %>
+        </div>
+    <% } %>
+
       <h2 class="login-form__title">Fazer login</h2>
       <form action="/authenticate" method="POST">
         <p>Bem-vindo ao nosso DashSense!, aqui demonstraremos nosso melhor pelo seu cultivo!</p>

@@ -34,8 +34,8 @@ router.post("/createUser", (req, res) => {
             res.redirect("/login")
 
         } else {
-            res.send(`Usuário já cadastrado!
-        <br><a href="/cadastro">Tentar novamente.</a>`)
+            req.flash('danger', 'O usuário já está cadastrado! Faça o login.')
+            res.redirect("/cadastro")
         }
     })
 
@@ -58,14 +58,15 @@ router.post("/authenticate", (req, res) => {
                     email: user.email,
                     name: user.nome
                 }
+                req.flash('success', 'Login efetuado com sucesso!')
                 res.redirect("/home")
             } else {
-                res.send(`Senha inválida!
-          <br><a href="/login">Tentar novamente.</a>`)
+                req.flash('danger', 'A senha informada está incorreta! Tente novamente.')
+                res.redirect("/login")
             }
         } else {
-            res.send(`Usuário não existe.
-        <br><a href="/login">Tentar novamente.</a>`)
+            req.flash('danger', 'O usuário informado não existe! Verifique os dados digitados.')
+            res.redirect("/login")
         }
     })
 })

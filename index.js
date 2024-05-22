@@ -4,9 +4,11 @@ import session from "express-session"
 
 import UsersController from "./controllers/UsersController.js"
 import HomeController from "./controllers/HomeController.js"
-import Auth from "./middleware/Auth.js"
+import flash from 'express-flash'
 
 const app = express()
+
+app.use(flash())
 
 app.use(session({
     secret: "aquasense",
