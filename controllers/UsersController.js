@@ -71,4 +71,10 @@ router.post("/authenticate", (req, res) => {
     })
 })
 
+// ROTA DE LOGOUT
+router.get("/logout", (req, res) => {
+    req.session.user = undefined
+    res.redirect("/login")
+  })
+
 export default router
