@@ -1,46 +1,58 @@
 <%- include ("partials/head.ejs") %>
-  <div class="container login-container">
-    <div class="login-image">
+<%- include ("partials/flash_message.ejs") %>
+<section class="modal--auth">
+  <div class="container modal__container--auth">
+    <div class="container__image--auth">
       <img class="img" src="imgs/image-logo.svg" alt="Logo" />
     </div>
-    <div class="bars">
-      <img src="imgs/image-bars.svg" alt="">
+    <div class="image__bars--auth">
+      <img src="imgs/image-bars.svg" alt="" />
     </div>
-    <div class="row col col-lg-2 login-form">
-
-      <% if (messages.danger) { %>
-        <div class="alert alert-danger">
-          <%= messages.danger %>
+    <div class="row col col-lg-2 container__form--auth">
+      <h2 class="container__form__title--auth">Se Cadastrar</h2>
+      <form action="/createUser" method="POST">
+        <div class="form-group form-control-lg">
+          <label for="name">Nome</label>
+          <input
+            type="name"
+            name="name"
+            class="form-control form-control-lg"
+            required
+            placeholder="Digite seu nome"
+          />
         </div>
-        <% } %>
-
-          <h2 class="login-form__title">Se Cadastrar</h2>
-          <form action="/createUser" method="POST">
-            <div class="form-group form-control-lg">
-              <label for="name">Nome</label>
-              <input type="name" name="name" class="form-control form-control-lg" required
-                placeholder="Digite seu nome" />
-            </div>
-            <div class="form-group form-control-lg">
-              <label for="email">E-mail</label>
-              <input name="email" type="email" class="form-control form-control-lg" required
-                placeholder="Digite seu e-mail" />
-            </div>
-            <div class="form-group form-control-lg">
-              <label for="password">Senha</label>
-              <input name="password" type="password" class="form-control form-control-lg" required
-                placeholder="Digite sua senha" />
-            </div>
-            <div class="navbar">
-              <div class="create-account">
-                <a href="/login">Fazer login</a>
-              </div>
-              <button type="submit" class="btn btn-primary">Cadastrar</button>
-            </div>
-          </form>
-          <p>Seus dados estão seguros. Seguimos a <a href="">LGPD</a> para coletá-los e tratá-los.</p>
+        <div class="form-group form-control-lg">
+          <label for="email">E-mail</label>
+          <input
+            name="email"
+            type="email"
+            class="form-control form-control-lg"
+            required
+            placeholder="Digite seu e-mail"
+          />
+        </div>
+        <div class="form-group form-control-lg">
+          <label for="password">Senha</label>
+          <input
+            name="password"
+            type="password"
+            class="form-control form-control-lg"
+            required
+            placeholder="Digite sua senha"
+          />
+        </div>
+        <div class="navbar">
+          <div class="form__btn__secondary">
+            <a href="/login">Fazer login</a>
+          </div>
+          <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </div>
+      </form>
+      <p>
+        Seus dados estão seguros. Seguimos a <a href="">LGPD</a> para coletá-los
+        e tratá-los.
+      </p>
     </div>
   </div>
-
-
-  <%- include ("partials/foot.ejs") %>
+</section>
+<%- include ("partials/foot.ejs") %>

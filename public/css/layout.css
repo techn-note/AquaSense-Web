@@ -1,14 +1,15 @@
-body {
+section.modal--auth {
   background-color: var(--cinza-claro);
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100vw;
   height: 100vh;
   margin: 0;
   padding: 1.125rem;
 }
 
-.login-container {
+div.modal__container--auth {
   max-width: 900px;
   width: 100%;
   display: flex;
@@ -16,13 +17,7 @@ body {
   flex-direction: column;
 }
 
-.login-image img {
-  max-width: 25%;
-  flex: 1;
-  height: 150px;
-}
-
-.login-image {
+div.container__image--auth {
   display: flex;
   justify-content: center;
   width: 100%;
@@ -31,17 +26,25 @@ body {
   padding: 0 0 2rem 0;
 }
 
-.bars {
+div.container__image--auth img {
+  max-width: 25%;
+  flex: 1;
+  height: 150px;
+}
+
+div.image__bars--auth {
   display: none;
 }
 
-.login-form {
+div.container__form--auth {
   flex: 1;
 }
-.login-form h2 {
+
+div.container__form__title--auth h2 {
   font-weight: bold;
   margin-bottom: 20px;
 }
+
 .form-control {
   border-radius: 5px;
   margin-bottom: 20px;
@@ -50,60 +53,58 @@ body {
   border-radius: 5px;
   padding: 10px;
 }
-.create-account {
+.form__btn__secondary {
   text-align: center;
   margin-top: 10px;
 }
 
 @media (min-width: 660px) {
-  .login-image {
+  .container__image--auth {
     display: flex;
     justify-content: center;
     height: 150px;
     width: 150px;
   }
 
-  .login-image img {
+  .container__image--auth img {
     width: 150px;
     height: 150px;
     max-width: none;
   }
 }
 
-
 @media (min-width: 840px) {
-    body {
-      background: radial-gradient(#72BBFF,#0184FF);
-    }
+  section.modal--auth {
+    background: radial-gradient(#72bbff, #0184ff);
+  }
 
-    .login-form {
-      padding: 0;
-    }
+  .login-form {
+    padding: 0;
+  }
 
-    .login-container {
-      max-width: 80vw;
-      padding: 3rem;
-      background-color: var(--cinza-claro);
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
-    }
-    
+  div.modal__container--auth {
+    max-width: 80vw;
+    padding: 3rem;
+    background-color: var(--cinza-claro);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+  }
 }
 
 @media (min-width: 990px) {
-  .login-container {
+  div.modal__container--auth {
     flex-direction: row;
   }
 
-  .login-image {
+  div.container__image--auth {
     display: flex;
     justify-content: center;
     height: 300px;
     width: 300px;
   }
 
-  .login-image img {
+  div.container__image--auth img {
     width: 300px;
     height: 300px;
     max-width: none;
@@ -111,34 +112,29 @@ body {
 }
 
 @media (min-width: 1240px) {
-  .login-image {
+  div.container__image--auth {
     height: 300px;
     width: 300px;
   }
 
-  .login-image img {
+  div.container__image--auth img {
     width: 300px;
     height: 300px;
+    
   }
 }
 
 @media (min-width: 1600px) {
-    .login-container {
-      max-width: 1240px;
-      padding: 0 5rem 0 0;
-    }
+  div.modal__container--auth {
+    max-width: 1240px;
+    padding: 0 5rem 0 0;
+  }
 
-    .bars {
-      display: block;
-    }
+  div.image__bars--auth {
+    display: block;
+  }
+
+  div.container__image--auth img {
+    padding-left: 75px;
+  }
 }
-
-
-
-
-
-
-/* 
-
-
- */

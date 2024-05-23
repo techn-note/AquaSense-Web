@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-</head>
-<body>
-    <h1>Bem-vindo, Teste!</h1>
+<%- include('partials/head.ejs') %>
+<%- include('partials/header.ejs') %>
+    <!-- <h1>Bem-vindo, Teste!</h1>
     <li>Usuário: <%= user ? user.name : 'N/A' %></li>
     <h2>Sensores</h2>
     <ul>
@@ -15,6 +9,5 @@
         <li>Oxigenação: <%= oxigenacao ? oxigenacao.valor : 'N/A' %></li>
         <li>pH: <%= ph ? ph.valor : 'N/A' %></li>
         <li>volume: <%= volume ? volume.valor : 'N/A' %></li>
-    </ul>
-</body>
-</html>
+    </ul> -->
+<%- include('partials/foot.ejs') %>
