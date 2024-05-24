@@ -5,7 +5,7 @@ const peixe = new mongoose.Schema({
     idade: Number,
     especie: String,
     peso: Number,
-    quantidae: Number
+    quantidade: Number
 })
 
 export default peixe

@@ -1,8 +1,8 @@
 import mongoose from 'mongoose'
 
 const atualizacoes = new mongoose.Schema({
-    mensagemAlerta: String,
-    dataAlerta: String
+    mensagem: String,
+    data: Date
 })
 
 export default atualizacoes

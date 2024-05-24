@@ -41,11 +41,11 @@ class UserService {
     }
 
     // ALTERAR
-    Update(nome, email, senha) {
+    Update(nome, email, password) {
         User.findByIdAndUpdate(email, {
             nome: nome,
             email: email,
-            senha: senha
+            password: password
         }).then(() => {
             console.log(`Usuário com email "${email}" alterado com sucesso`)
         }).catch(err => {

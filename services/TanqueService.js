@@ -11,7 +11,7 @@ class TanqueService {
     }
 
     // Cadastrar um Novo Tanque
-    Create(nome, capacidade) {
+    Create(nome, capacidade, numero) {
         const newTanque = new Tanque({
             nome: nome,
             capacidade: capacidade
@@ -29,10 +29,11 @@ class TanqueService {
     }
 
     // ALTERAR
-    Update(nome, capacidade) {
+    Update(nome, capacidade, numero) {
         Tanque.findByIdAndUpdate(nome, {
             nome: nome,
-            capacidade: capacidade
+            capacidade: capacidade,
+            numero: numero
         }).then(() => {
             console.log(`Tanque com nome "${nome}" alterado com sucesso`)
         }).catch(err => {
