@@ -10,15 +10,15 @@
         <div class="d-flex align-items-center mx-4">
           <img src="imgs/image-profile.svg" alt="Imagem de perfil" class="mr-2" />
           <div class="ms-2">
-            <h5 class="pt-3 mb-auto">Rodrigo</h5>
+            <h5 class="pt-3 mb-auto"><%=user.name%></h5>
             <p class="text-primary">Admin</p>
           </div>
         </div>
         <nav class="navbar">
-              <a class="nav-link btn btn-primary active px-5 mx-4" href="#"><i class="fas fa-home"></i> Início</a>
-              <a class="nav-link btn btn-primary px-5 mx-4" href="#"><i class="fas fa-chart-line"></i> Dados</a>
-              <a class="nav-link btn btn-primary px-5 mx-4" href="#"><i class="fas fa-cog"></i> Configurações</a>
-              <a class="nav-link btn btn-primary px-5 mx-4" href="/logout"><i class="fas fa-sign-out-alt"></i> Sair</a>
+              <a class="nav-link nav__btn btn btn-primary active  mx-1" href="#"><i class="fas fa-home"></i> Início</a>
+              <a class="nav-link nav__btn btn btn-primary mx-1" href="/dados"><i class="fas fa-chart-line"></i> Dados</a>
+              <a class="nav-link nav__btn btn btn-primary mx-1" href="/configuracoes"><i class="fas fa-cog"></i> Configurações</a>
+              <a class="nav-link nav__btn btn btn-primary mx-1" href="/logout"><i class="fas fa-sign-out-alt"></i> Sair</a>
         </nav>
       </div>
     </div>

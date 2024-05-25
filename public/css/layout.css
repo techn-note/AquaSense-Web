@@ -50,6 +50,26 @@ div.container__form__title--auth h2 {
   border-radius: 5px;
   margin-bottom: 20px;
 }
+
+a.nav__btn {
+ width: 200px;
+}
+
+.nav-link {
+  transition: background-color 0.3s, border 0.3s, color 0.3s; 
+  background-color: transparent;
+  border: none;
+  color: #333;
+  font-size: 1rem;
+}
+
+.nav-link:hover {
+  background-color: var(--cinza-claro); 
+  border: #0184ff 1px solid;
+  color: #0184ff;
+}
+
+
 .btn-primary {
   border-radius: 5px;
   padding: 10px;
@@ -138,4 +158,90 @@ div.container__form__title--auth h2 {
   div.container__image--auth img {
     padding-left: 75px;
   }
+}
+
+
+.general-characteristics {
+  display: flex;
+  justify-content: space-around;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.general-characteristics__item {
+  text-align: center;
+  flex: 1;
+}
+
+.general-characteristics__item--ammonia .general-characteristics__label {
+  color: #bfae32;
+}
+
+.general-characteristics__item--temperature .general-characteristics__label {
+  color: #d9534f;
+}
+
+.general-characteristics__item--ph .general-characteristics__label {
+  color: #5bc0de;
+}
+
+.general-characteristics__label {
+  display: block;
+  font-weight: bold;
+}
+
+.general-characteristics__value {
+  display: block;
+  font-size: 1.5em;
+}
+
+.water-level, .oxygen-level {
+  background-color: #f8f9fa;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  margin-top: 20px;
+}
+
+.water-level__label, .oxygen-level__label {
+  display: block;
+  font-weight: bold;
+}
+
+.water-level__value, .oxygen-level__value {
+  display: block;
+  font-size: 2em;
+  color: #007bff;
+}
+
+.water-level__total, .oxygen-level__recommendation {
+  display: block;
+  font-size: 0.8em;
+  color: #6c757d;
+}
+
+.modal__main {
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: 0 4px 8px rgba(92, 92, 92, 0.537);
+}
+
+.status {
+  text-align: center;
+  background-color: #007bff;
+  color: #fff;
+  padding: 20px;
+  border-radius: 0px 10px 10px 0px;
+}
+
+.status__icon {
+  font-size: 3em;
+}
+
+.status__text {
+  display: block;
+  font-size: 1.5em;
+  margin-top: 10px;
 }
