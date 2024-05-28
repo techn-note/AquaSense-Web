@@ -5,7 +5,9 @@
   <canvas id="myChart"></canvas>
   <canvas id="myChart2"></canvas>
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <script>
   document.addEventListener('DOMContentLoaded', (event) => {
     const ctx = document.getElementById('myChart').getContext('2d');
@@ -32,4 +34,37 @@
   });
 </script>
 
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    const ctx = document.getElementById('myChart2').getContext('2d');
+    const phSensorData = <%- JSON.stringify(ph) %>;
+    
+    // Extrair apenas a hora do sensor de Ph
+    const dataLabels = phSensorData.map(entry => {
+      const date = new Date(entry.data);
+      return `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+    });
+
+    const dataValues = phSensorData.map(entry => entry.valor);
+
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: dataLabels,
+        datasets: [{
+          label: 'Ph',
+          data: dataValues,
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  });
+</script>
 <%- include('partials/foot.ejs') %>
