@@ -4,6 +4,8 @@ import session from "express-session"
 
 import UsersController from "./controllers/UsersController.js"
 import HomeController from "./controllers/HomeController.js"
+import DadosController from "./controllers/DadosController.js"
+
 import flash from 'express-flash'
 
 const app = express()
@@ -33,6 +35,7 @@ app.use(express.static('public'))
 
 app.use("/", UsersController)
 app.use("/", HomeController)
+app.use("/", DadosController)
 
 app.get("/", function(req, res) {
     res.render("index")

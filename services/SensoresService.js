@@ -50,6 +50,11 @@ class SensoresService {
         return sensorVolume;
     }
 
+    async selectAllPh() {
+        const sensorVolume = await Sensores.find({ tipo: 'ph' });
+        return sensorVolume;
+    }
+
 }
 
 export default new SensoresService();
