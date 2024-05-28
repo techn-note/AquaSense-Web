@@ -55,6 +55,29 @@ class SensoresService {
         return sensorVolume;
     }
 
+    // Selecionar o último valor inserido por tipo - TEMPERATURA
+    async selectAllTemp() {
+        const sensorTemp = await Sensores.find({ tipo: 'temperatura' });
+        return sensorTemp;
+    }
+
+    // Selecionar o último valor inserido por tipo - AMONIA
+    async selectAllAmonia() {
+        const sensorAmonia = await Sensores.find({ tipo: 'amonia' });
+        return sensorAmonia;
+    }
+
+    // Selecionar o último valor inserido por tipo - OXIGENAÇÃO
+    async selectAllOxigenacao() {
+        const sensorOxigenacao = await Sensores.find({ tipo: 'oxigenacao' });
+        return sensorOxigenacao;
+    }
+
+    // Selecionar o último valor inserido por tipo - VOLUME
+    async selectAllVolume() {
+        const sensorVolume = await Sensores.find({ tipo: 'volume' });
+        return sensorVolume;
+    }
 }
 
 export default new SensoresService();

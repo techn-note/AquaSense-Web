@@ -6,11 +6,11 @@ import Auth from "../middleware/Auth.js"
 router.get('/dados', Auth, async (req, res) => {
     try {
         const [tempSensor, amoniaSensor, oxigenacaoSensor, phSensor, volumeSensor] = await Promise.all([
-            SensoresService.selectTemp(),
-            SensoresService.selectAmonia(),
-            SensoresService.selectOxigenacao(),
+            SensoresService.selectAllTemp(),
+            SensoresService.selectAllAmonia(),
+            SensoresService.selectAllOxigenacao(),
             SensoresService.selectAllPh(),
-            SensoresService.selectVolume()
+            SensoresService.selectAllVolume()
         ]);
 
         res.render("dados", {
