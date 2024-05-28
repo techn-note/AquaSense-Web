@@ -245,3 +245,9 @@ a.nav__btn {
   font-size: 1.5em;
   margin-top: 10px;
 }
+
+canvas {
+  border: 1px solid gainsboro;
+  background-color: white;
+  box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
+}

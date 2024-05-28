@@ -9,7 +9,7 @@ router.get('/dados', Auth, async (req, res) => {
             SensoresService.selectTemp(),
             SensoresService.selectAmonia(),
             SensoresService.selectOxigenacao(),
-            SensoresService.selectAllPh(),
+            SensoresService.selectPh(),
             SensoresService.selectVolume()
         ]);
 
