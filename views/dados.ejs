@@ -2,7 +2,34 @@
 <%- include('partials/header.ejs') %>
 
 <div class="container">
-    <canvas id="myChart"></canvas>
+  <canvas id="myChart"></canvas>
+  <canvas id="myChart2"></canvas>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const dataLabels = <%- JSON.stringify(["amonia", "Ph", "Temperatura"]) %>;
+    const dataValues = <%- JSON.stringify([amonia.valor, ph.valor, temperatura.valor]) %>;
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: dataLabels,
+        datasets: [{
+          label: '# of Votes',
+          data: dataValues,
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  });
+</script>
 
 <%- include('partials/foot.ejs') %>
