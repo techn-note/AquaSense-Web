@@ -1,0 +1,52 @@
+<%- include ("partials/head.ejs") %>
+<%- include ("partials/flash_message.ejs") %>
+<section class="modal--auth">
+  <div class="container modal__container--auth">
+    <div class="container__image--auth">
+      <img class="img" src="imgs/image-logo.svg" alt="Logo" />
+    </div>
+    <div class="image__bars--auth">
+      <img src="imgs/image-bars.svg" alt="" />
+    </div>
+    <div class="row col col-lg-2 container__form--auth">
+      <h2 class="container__form__title--auth">Fazer login</h2>
+      <form action="/authenticate" method="POST">
+        <p>
+          Bem-vindo ao nosso DashSense!, aqui demonstraremos nosso melhor pelo
+          seu cultivo!
+        </p>
+        <div class="form-group form-control-lg">
+          <label for="email">E-mail</label>
+          <input
+            type="email"
+            class="form-control form-control-lg"
+            name="email"
+            required
+            placeholder="Digite seu e-mail"
+          />
+        </div>
+        <div class="form-group form-control-lg">
+          <label for="password">Senha</label>
+          <input
+            type="password"
+            class="form-control form-control-lg"
+            name="password"
+            required
+            placeholder="Digite sua senha"
+          />
+        </div>
+        <div class="navbar">
+          <div class="form__btn__secondary">
+            <a href="/cadastro">Criar conta</a>
+          </div>
+          <button type="submit" class="btn btn-primary">Entrar</button>
+        </div>
+      </form>
+      <p>
+        Seus dados estão seguros. Seguimos a <a href="">LGPD</a> para coletá-los
+        e tratá-los.
+      </p>
+    </div>
+  </div>
+</section>
+<%- include ("partials/foot.ejs") %>
