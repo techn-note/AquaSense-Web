@@ -1,7 +1,7 @@
-import express from "express"
-const router = express.Router()
-import SensoresService from "../services/SensoresService.js"
-import Auth from "../middleware/Auth.js"
+import express from "express";
+const router = express.Router();
+import SensoresService from "../services/SensoresService.js";
+import Auth from "../middleware/Auth.js";
 
 router.get('/home', Auth, async (req, res) => {
     try {
@@ -26,4 +26,4 @@ router.get('/home', Auth, async (req, res) => {
     }
 });
 
-export default router
+export default router;

@@ -27,7 +27,7 @@ app.use((req, res, next) => {
 app.use(express.urlencoded({ extended: false}))
 app.use(express.json())
 
-mongoose.connect("mongodb+srv://ambiente-teste:fatec-projetos@projetos-node.8tzv6mq.mongodb.net/?retryWrites=true&w=majority&appName=projetos-node")
+mongoose.connect("mongodb://localhost:27017/aquasense")
 
 app.set("view engine", "ejs")
 
@@ -41,7 +41,7 @@ app.get("/", function(req, res) {
     res.render("index")
 })
 
-const port = 80
+const port = 8000
 app.listen(port, function (erro) {
     if (erro) {
         console.log("Ocorreu um erro!")
