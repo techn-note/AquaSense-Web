@@ -224,6 +224,7 @@ a.nav__btn {
 }
 
 .modal__main {
+  height: 80vh;
   border-radius: 10px 10px 10px 10px;
   box-shadow: 0 4px 8px rgba(92, 92, 92, 0.537);
 }

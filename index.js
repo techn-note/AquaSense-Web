@@ -41,7 +41,7 @@ app.get("/", function(req, res) {
     res.render("index")
 })
 
-const port = 8000
+const port = 4000
 app.listen(port, function (erro) {
     if (erro) {
         console.log("Ocorreu um erro!")
