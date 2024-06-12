@@ -1,69 +1,53 @@
-<%- include('partials/head.ejs') %> 
+<%- include('partials/head.ejs') %>
 <%- include('partials/header.ejs') %>
 <div class="container my-4">
   <div class="row modal__main justify-content-center">
-    <div class="row modal__main justify-content-center">
-      <div class="col-md-6">
-        <div class="row justify-content-center my-4">
+    <div class="col-md-6">
+      <div class="px-5">
+        <div class="row text-center my-4">
           <h1>Atualizações</h1>
         </div>
         <div class="row justify-content-center mb-4">
           <p class="text-center">
-            Aumente a temperatura do tanque pois os peixes não podem ficar a uma
-            temperatura abaixo de 16°C, o ideal é mantê-los dentro de 24°C a 30°C!
+            <%= mensagem ? mensagem.mensagem : 'A verificação do servidor esta fora do ar!' %>
           </p>
         </div>
         <div class="general-characteristics">
-          <div
-            class="general-characteristics__item general-characteristics__item--ammonia"
-          >
-            <span class="general-characteristics__label">Amônia</span>
-            <span class="general-characteristics__value"
-              ><%= amonia ? amonia.valor : '--' %></span
-            >
+          <div class="row text-center my-4">
+            <h2>Caracteristicas Gerais</h1>
           </div>
-          <div
-            class="general-characteristics__item general-characteristics__item--temperature"
-          >
-            <span class="general-characteristics__label">Temp</span>
-            <span class="general-characteristics__value"
-              ><%= temperatura ? temperatura.valor : '--'%></span
-            >
+          <div class="d-flex">
+            <div class="general-characteristics__item general-characteristics__item--ammonia p-3">
+              <span class="general-characteristics__label">Amônia</span>
+              <span class="general-characteristics__value"><%= amonia ? amonia.valor + '%' : '--' %></span>
+            </div>
+            <div class="general-characteristics__item general-characteristics__item--temperature p-3 mx-2">
+              <span class="general-characteristics__label">Temp</span>
+              <span class="general-characteristics__value"><%= temperatura ? temperatura.valor : '--'%></span>
+            </div>
+            <div class="general-characteristics__item general-characteristics__item--ph p-3">
+              <span class="general-characteristics__label">Ph</span>
+              <span class="general-characteristics__value"><%= ph ? ph.valor : '--' %></span>
+            </div>
           </div>
-          <div
-            class="general-characteristics__item general-characteristics__item--ph"
-          >
-            <span class="general-characteristics__label">Ph</span>
-            <span class="general-characteristics__value"
-              ><%= ph ? ph.valor : '--' %></span
-            >
-          </div>
-        </div>
-        <div class="row justify-content-center">
-          <div class="water-level mt-3 mx-2">
-            <span class="water-level__label">Nível Da Água</span>
-            <span class="water-level__value"
-              ><%= volume ? volume.valor : '--' %></span
-            >
-            <span class="water-level__total">Total: 180L</span>
-          </div>
-          <div class="oxygen-level mt-3 mx-2">
-            <span class="oxygen-level__label">Nível de Oxigenação</span>
-            <span class="oxygen-level__value"
-              ><%= oxigenacao ? oxigenacao.valor : '--' %></span
-            >
-            <span class="oxygen-level__recommendation">Recomendado: 5 mg/L</span>
-          </div>
+
         </div>
       </div>
-      <div
-        class="col-md-6 d-flex align-items-center justify-content-center status"
-      >
-        <div class="">
-          <i class="status__icon">&#128077;</i>
-          <span class="status__text">Tudo certo Por aqui!</span>
+      <div class="d-flex justify-content-center">
+        <div class="water-level mt-3 mx-2">
+          <span class="water-level__label">Nível Da Água</span>
+          <span class="water-level__value"><%= volume ? volume.valor : '--' %></span>
+          <span class="water-level__total">Total: 180L</span>
+        </div>
+        <div class="oxygen-level mt-3 mx-2">
+          <span class="oxygen-level__label">Nível de Oxigenação</span>
+          <span class="oxygen-level__value"><%= oxigenacao ? oxigenacao.valor : '--' %></span>
+          <span class="oxygen-level__recommendation">Recomendado: 5 mg/L</span>
         </div>
       </div>
+    </div>
+    <div class="col-md-6 d-flex align-items-center justify-content-center status">
+
     </div>
   </div>
 </div>

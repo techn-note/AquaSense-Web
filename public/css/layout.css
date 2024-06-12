@@ -163,6 +163,7 @@ a.nav__btn {
 
 .general-characteristics {
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   background-color: #f8f9fa;
   padding: 20px;
@@ -171,20 +172,24 @@ a.nav__btn {
 }
 
 .general-characteristics__item {
+  border-radius: 10px;
   text-align: center;
   flex: 1;
 }
 
-.general-characteristics__item--ammonia .general-characteristics__label {
-  color: #bfae32;
+.general-characteristics__item--ammonia {
+  background-color: #DBAB4A;
+  color: var(--cinza-claro);
 }
 
-.general-characteristics__item--temperature .general-characteristics__label {
-  color: #d9534f;
+.general-characteristics__item--temperature {
+  background-color: #D9534F;
+  color: var(--cinza-claro);
 }
 
-.general-characteristics__item--ph .general-characteristics__label {
-  color: #5bc0de;
+.general-characteristics__item--ph {
+  background-color: #5BC0DE;
+  color: var(--cinza-claro);
 }
 
 .general-characteristics__label {
