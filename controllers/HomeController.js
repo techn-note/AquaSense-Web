@@ -6,12 +6,13 @@ import Auth from "../middleware/Auth.js";
 
 router.get('/home', Auth, async (req, res) => {
     try {
-        const [tempSensor, amoniaSensor, oxigenacaoSensor, phSensor, volumeSensor] = await Promise.all([
+        const [tempSensor, amoniaSensor, oxigenacaoSensor, phSensor, volumeSensor, mensagem] = await Promise.all([
             SensoresService.selectTemp(),
             SensoresService.selectAmonia(),
             SensoresService.selectOxigenacao(),
             SensoresService.selectPh(),
-            SensoresService.selectVolume()
+            SensoresService.selectVolume(),
+            AtualizacoesService.selectMensagem()
         ]);
 
         await AtualizacoesService.analisarSensores();
@@ -22,6 +23,7 @@ router.get('/home', Auth, async (req, res) => {
             oxigenacao: oxigenacaoSensor,
             ph: phSensor,
             volume: volumeSensor,
+            mensagem: mensagem,
             user: req.session.user
         });
     } catch (error) {

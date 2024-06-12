@@ -38,6 +38,11 @@ class AtualizacoesService {
         await novaAtualizacao.save();
         console.log(`Atualização registrada: ${mensagem}`);
     }
+
+    async selectMensagem() {
+        const mensagem = await Atualizacoes.findOne().sort({ data: -1 });
+        return mensagem;
+    }
 }
 
 export default new AtualizacoesService();
