@@ -1,6 +1,7 @@
 import express from "express";
 const router = express.Router();
 import SensoresService from "../services/SensoresService.js";
+import AtualizacoesService from "../services/AtualizacoesService.js";
 import Auth from "../middleware/Auth.js";
 
 router.get('/home', Auth, async (req, res) => {
@@ -13,6 +14,8 @@ router.get('/home', Auth, async (req, res) => {
             SensoresService.selectVolume()
         ]);
 
+        await AtualizacoesService.analisarSensores();
+
         res.render("home", {
             temperatura: tempSensor,
             amonia: amoniaSensor,
@@ -22,7 +25,7 @@ router.get('/home', Auth, async (req, res) => {
             user: req.session.user
         });
     } catch (error) {
-        res.status(500).send(`Erro ao carregar dados dos sensores: ${error}`);
+        res.status(500).send(`Erro ao carregar dados dos sensores ou analisar sensores: ${error}`);
     }
 });
 
