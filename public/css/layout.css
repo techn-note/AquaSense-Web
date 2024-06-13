@@ -160,6 +160,9 @@ a.nav__btn {
   }
 }
 
+.modal__main__title {
+  color: #007bff;;
+}
 
 .general-characteristics {
   display: flex;
@@ -188,7 +191,7 @@ a.nav__btn {
 }
 
 .general-characteristics__item--ph {
-  background-color: #5BC0DE;
+  background-color: #0084FF;
   color: var(--cinza-claro);
 }
 
@@ -203,6 +206,7 @@ a.nav__btn {
 }
 
 .water-level, .oxygen-level {
+  min-width: 250px;
   background-color: #f8f9fa;
   padding: 10px;
   border-radius: 10px;
@@ -214,9 +218,10 @@ a.nav__btn {
 .water-level__label, .oxygen-level__label {
   display: block;
   font-weight: bold;
+  color: var(--cinza-texto);
 }
 
-.water-level__value, .oxygen-level__value {
+.level__value {
   display: block;
   font-size: 2em;
   color: #007bff;
@@ -258,6 +263,12 @@ canvas {
   box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
 }
 
-.container-canvas{
-  max-width: 400px;
+.container-canvas {
+  width: 100%;
+  display: flex;
+}
+
+.modal__graphic__canvas {
+  flex-grow: 1;
+  flex-shrink: 1;
 }

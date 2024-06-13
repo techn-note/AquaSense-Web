@@ -5,12 +5,10 @@
     <div class="col-md-6">
       <div class="px-5">
         <div class="row text-center my-4">
-          <h1>Atualizações</h1>
+          <h1 class="modal__main__title fw-semibold">Atualizações</h1>
         </div>
-        <div class="row justify-content-center mb-4">
-          <p class="text-center">
+        <div class="row justify-content-center my-3 text-center fs-6">
             <%= mensagem ? mensagem.mensagem : 'A verificação do servidor esta fora do ar!' %>
-          </p>
         </div>
         <div class="general-characteristics">
           <div class="row text-center my-4">
@@ -18,36 +16,36 @@
           </div>
           <div class="d-flex">
             <div class="general-characteristics__item general-characteristics__item--ammonia p-3">
-              <span class="general-characteristics__label">Amônia</span>
+              <span class="general-characteristics__label text-start d-flex align-items-center"><img src="/imgs/icons/icon-ammonia.svg" class="me-2" alt="icon-ammonia"> <h4 class="d-inline-block m-0 me-2">Amônia</h4></span>
               <span class="general-characteristics__value"><%= amonia ? amonia.valor + '%' : '--' %></span>
             </div>
             <div class="general-characteristics__item general-characteristics__item--temperature p-3 mx-2">
-              <span class="general-characteristics__label">Temp</span>
-              <span class="general-characteristics__value"><%= temperatura ? temperatura.valor : '--'%></span>
+              <span class="general-characteristics__label text-start d-flex align-items-center"><img src="/imgs/icons/icon-temperature.svg" class="me-2" alt="icon-temperature"> <h4 class="d-inline-block m-0">Temp</h4></span>
+              <span class="general-characteristics__value"><%= temperatura ? temperatura.valor + '°C' : '--'%></span>
             </div>
             <div class="general-characteristics__item general-characteristics__item--ph p-3">
-              <span class="general-characteristics__label">Ph</span>
+              <span class="general-characteristics__label text-start d-flex align-items-center"><img src="/imgs/icons/icon-ph.svg" class="me-2" alt="icon-ph"><h4 class="d-inline-block m-0">Ph</h4></span>
               <span class="general-characteristics__value"><%= ph ? ph.valor : '--' %></span>
             </div>
           </div>
-
         </div>
       </div>
-      <div class="d-flex justify-content-center">
+      <div class="d-flex justify-content-center p-3">
         <div class="water-level mt-3 mx-2">
-          <span class="water-level__label">Nível Da Água</span>
-          <span class="water-level__value"><%= volume ? volume.valor : '--' %></span>
-          <span class="water-level__total">Total: 180L</span>
+          <span class="water-level__label text-start"><img src="/imgs/icons/icon-bar.svg" class="me-2" alt="icon-bar">Nível Da Água</span>
+          <span class="level__value mt-1 fs-2 fw-bold"><%= volume ? volume.valor + ' Litros' : '--' %></span>
+          <span class="water-level__total text-end fw-bold fs-6">Total: 180L</span>
         </div>
-        <div class="oxygen-level mt-3 mx-2">
-          <span class="oxygen-level__label">Nível de Oxigenação</span>
-          <span class="oxygen-level__value"><%= oxigenacao ? oxigenacao.valor : '--' %></span>
-          <span class="oxygen-level__recommendation">Recomendado: 5 mg/L</span>
+        <div class="oxygen-level mt-3 mx-2 p-3">
+          <span class="oxygen-level__label text-start"><img src="/imgs/icons/icon-bar.svg" class="me-2" alt="icon-bar">Nível de Oxigenação</span>
+          <span class="level__value mt-1 fs-2 fw-bold"><%= oxigenacao ? oxigenacao.valor + ' mg/L' : '--' %></span>
+          <span class="oxygen-level__recommendation text-end fw-bold fs-6">Recomendado: 5 mg/L</span>
         </div>
       </div>
     </div>
-    <div class="col-md-6 d-flex align-items-center justify-content-center status">
-
+    <div class="col-md-6 d-flex align-items-center justify-content-center flex-column status">
+      <img src="/imgs/icons/icon-ok.svg" alt="OK">
+      <span class="fs-2 fw-semibold mt-2">Tudo Certo por aqui!</span>
     </div>
   </div>
 </div>

@@ -4,6 +4,7 @@
   --cinza-claro: #f2f2f2;
   --cinza-escuro: #26272b;
   --branco: #fff;
+  --texto: #333;
   --cinza-texto: #737373;
   --verde-link: #3366cc;
   --base-font-size: 16px;
@@ -26,13 +27,16 @@ p {
 }
 
 h1 {
+  color: var(--texto);
   font-size: 2.875rem;
 }
 
 h2 {
+  color: var(--texto);
   font-size: 1.75rem;
 }
 
 h3 {
+  color: var(--texto);
   font-size: 1.5rem;
 }
