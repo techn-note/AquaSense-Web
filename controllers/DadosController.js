@@ -158,7 +158,7 @@ router.get("/cadastroTanque", Auth, async (req,res) => {
     TanqueService.SelectOne(numero).then(tanque => {
 
         if (tanque == undefined) {
-            TanqueService.Create(nome, capacidade, numero)
+            TanqueService.Create(nomeTanque, capacidade, numero)
             res.redirect("/dados")
         } else {
             req.flash("danger", "O tanque já foi cadastrado, confira a numeração!")
