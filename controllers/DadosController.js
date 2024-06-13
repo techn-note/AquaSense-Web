@@ -1,6 +1,8 @@
 import express from "express";
 const router = express.Router();
 import SensoresService from "../services/SensoresService.js";
+import PeixeService from "../services/PeixeService.js";
+import TanqueService from "../services/TanqueService.js";
 import Auth from "../middleware/Auth.js";
 import PDFPrinter from "pdfmake";
 
@@ -128,5 +130,40 @@ router.get('/pdf', Auth, async (req, res) => {
         res.status(500).send(`Erro ao carregar dados dos sensores: ${error}`);
     }
 });
+
+router.get("/cadastroPeixe", Auth, async (req, res) => {
+    const nomePeixe = req.body.nomePeixe
+    const idade = req.body.idade
+    const especie = req.body.especie
+    const peso = req.body.peso
+    const quantidade = req.body.quantidade
+
+    PeixeService.SelectOne(nomePeixe).then(peixe => {
+        if (peixe == undefined) {
+            PeixeService.create(nomePeixe, idade, especie, peso, quantidade)
+            res.redirect("/dados")
+        
+        } else {
+            req.flash("danger", "O peixe já foi cadastrado! Altere as informações se necessário")
+            req.redirect("/dados")
+        }
+    })
+})
+
+router.get("/cadastroTanque", Auth, async (req,res) => {
+    const nomeTanque = req.body.nomeTanque
+    const capacidade = req.body.capacidade
+    const numero = req.body.numero
+
+    TanqueService.SelectOne(numero).then(tanque => {
+
+        if (tanque == undefined) {
+            TanqueService.Create(nome, capacidade, numero)
+            res.redirect("/dados")
+        } else {
+            req.flash("danger", "O tanque já foi cadastrado, confira a numeração!")
+        }
+    })
+})
 
 export default router;

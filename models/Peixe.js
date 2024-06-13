@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 
 const peixe = new mongoose.Schema({
-    nome: String,
+    nomePeixe: String,
     idade: Number,
     especie: String,
     peso: Number,
