@@ -1,14 +1,19 @@
 import express from "express"
 import mongoose from "mongoose"
 import session from "express-session"
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 import UsersController from "./controllers/UsersController.js"
 import HomeController from "./controllers/HomeController.js"
 import DadosController from "./controllers/DadosController.js"
+import ConfiguracoesController from "./controllers/ConfiguracoesController.js"
 
 import flash from 'express-flash'
 
 const app = express()
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 app.use(flash())
 
@@ -31,11 +36,12 @@ mongoose.connect("mongodb://localhost:27017/aquasense")
 
 app.set("view engine", "ejs")
 
-app.use(express.static('public'))
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use("/", UsersController)
 app.use("/", HomeController)
 app.use("/", DadosController)
+app.use("/", ConfiguracoesController)
 
 app.get("/", function(req, res) {
     res.render("index")

@@ -17,6 +17,7 @@
     "express-flash": "^0.0.2",
     "express-flash-message": "^3.0.2",
     "express-session": "^1.18.0",
+    "fs": "^0.0.1-security",
     "mongoose": "^8.3.4",
     "nodemon": "^3.1.0",
     "pdfmake": "^0.2.10"

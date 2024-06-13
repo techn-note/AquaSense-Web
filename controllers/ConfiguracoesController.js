@@ -1,26 +1,33 @@
 import express from "express";
-const router = express.Router();
 import UserService from "../services/UserService.js";
 import Auth from "../middleware/Auth.js";
+import { getUserImagePath } from "../services/userImagem.js";
+
+const router = express.Router();
 
 router.get("/configuracoes", Auth, async (req, res) => {
     try {
-       
-        const userEmail = req.user.email;
-        const user = await UserService.SelectOne(userEmail);
+        const user = req.session.user;
+        const email = user.email;
+        const usuario = await UserService.SelectOne(email);
 
-        if (!user) {
+        if (!usuario) {
             return res.status(404).json({ error: "Usuário não encontrado" });
         }
-        return res.status(200).json({
-            nome: user.nome,
-            email: user.email,
-            password: user.password
-        });
 
-    } catch (err) {
-        console.error("Erro ao buscar informações do usuário:", err);
-        return res.status(500).json({ error: "Erro ao buscar informações do usuário" });
+        const userImage = getUserImagePath(user.name);
+
+        res.render("configuracoes", {
+            user: {
+                name: user.name,
+                email: user.email,
+                image: userImage,
+                password: user.password
+            },
+            url: req.url
+        });
+    } catch (error) {
+        res.status(500).send(`Erro ao carregar dados do usuário: ${error.message}`);
     }
 });
 

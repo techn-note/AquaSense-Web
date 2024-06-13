@@ -1,10 +1,13 @@
 import express from "express";
-const router = express.Router();
+import UserService from "../services/UserService.js";
 import SensoresService from "../services/SensoresService.js";
 import PeixeService from "../services/PeixeService.js";
 import TanqueService from "../services/TanqueService.js";
 import Auth from "../middleware/Auth.js";
 import PDFPrinter from "pdfmake";
+import { getUserImagePath } from "../services/userImagem.js";
+
+const router = express.Router();
 
 router.get('/dados', Auth, async (req, res) => {
     try {
@@ -16,13 +19,22 @@ router.get('/dados', Auth, async (req, res) => {
             SensoresService.selectAllVolume()
         ]);
 
+        const user = req.session.user;
+
+        const userImage = getUserImagePath(user.name);
+
         res.render("dados", {
+            user: {
+                name: user.name,
+                email: user.email,
+                image: userImage
+            },
             temperatura: tempSensor,
             amonia: amoniaSensor,
             oxigenacao: oxigenacaoSensor,
             ph: phSensor,
             volume: volumeSensor,
-            user: req.session.user
+            url: req.url
         });
     } catch (error) {
         res.status(500).send(`Erro ao carregar dados dos sensores: ${error}`);
@@ -132,38 +144,67 @@ router.get('/pdf', Auth, async (req, res) => {
 });
 
 router.get("/cadastroPeixe", Auth, async (req, res) => {
-    const nomePeixe = req.body.nomePeixe
-    const idade = req.body.idade
-    const especie = req.body.especie
-    const peso = req.body.peso
-    const quantidade = req.body.quantidade
+    try {
+        const user = req.session.user;
+        const userImage = getUserImagePath(user.name);
 
-    PeixeService.SelectOne(nomePeixe).then(peixe => {
-        if (peixe == undefined) {
-            PeixeService.create(nomePeixe, idade, especie, peso, quantidade)
-            res.redirect("/dados")
-        
+        const nomePeixe = req.body.nomePeixe;
+        const idade = req.body.idade;
+        const especie = req.body.especie;
+        const peso = req.body.peso;
+        const quantidade = req.body.quantidade;
+
+        const peixe = await PeixeService.SelectOne(nomePeixe);
+
+        if (peixe === undefined) {
+            await PeixeService.create(nomePeixe, idade, especie, peso, quantidade);
+            res.redirect("/dados");
         } else {
-            req.flash("danger", "O peixe já foi cadastrado! Altere as informações se necessário")
-            req.redirect("/dados")
+            req.flash("danger", "O peixe já foi cadastrado! Altere as informações se necessário");
+            res.render("cadastroPeixe", {
+                user: {
+                    name: user.name,
+                    email: user.email,
+                    image: userImage
+                },
+                url: req.url,
+                message: req.flash("danger")
+            });
         }
-    })
-})
+    } catch (error) {
+        res.status(500).send(`Erro ao cadastrar peixe: ${error.message}`);
+    }
+});
 
-router.get("/cadastroTanque", Auth, async (req,res) => {
-    const nomeTanque = req.body.nomeTanque
-    const capacidade = req.body.capacidade
-    const numero = req.body.numero
+router.get("/cadastroTanque", Auth, async (req, res) => {
+    try {
+        const user = req.session.user;
+        const userImage = getUserImagePath(user.name);
 
-    TanqueService.SelectOne(numero).then(tanque => {
+        const nomeTanque = req.body.nomeTanque;
+        const capacidade = req.body.capacidade;
+        const numero = req.body.numero;
 
-        if (tanque == undefined) {
-            TanqueService.Create(nomeTanque, capacidade, numero)
-            res.redirect("/dados")
+        const tanque = await TanqueService.SelectOne(numero);
+
+        if (tanque === undefined) {
+            await TanqueService.Create(nomeTanque, capacidade, numero);
+            res.redirect("/dados");
         } else {
-            req.flash("danger", "O tanque já foi cadastrado, confira a numeração!")
+            req.flash("danger", "O tanque já foi cadastrado, confira a numeração!");
+            res.render("cadastroTanque", {
+                user: {
+                    name: user.name,
+                    email: user.email,
+                    image: userImage
+                },
+                url: req.url,
+                message: req.flash("danger")
+            });
         }
-    })
-})
+    } catch (error) {
+        res.status(500).send(`Erro ao cadastrar tanque: ${error.message}`);
+    }
+});
 
 export default router;
