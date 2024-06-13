@@ -264,11 +264,15 @@ canvas {
 }
 
 .container-canvas {
+  justify-content: center;
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
 }
 
 .modal__graphic__canvas {
-  flex-grow: 1;
+  gap: 20px;
+  width: 425px;
+  height: auto;
   flex-shrink: 1;
 }
