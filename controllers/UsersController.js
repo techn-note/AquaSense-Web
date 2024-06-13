@@ -38,8 +38,6 @@ router.post("/createUser", (req, res) => {
             res.redirect("/cadastro")
         }
     })
-
-
 })
 
 // ROTA DE AUTENTICAÇÃO

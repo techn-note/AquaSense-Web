@@ -20,6 +20,11 @@ class UserService {
         return user
     }
 
+    async selectAll() {
+        const user = await User.find();
+        return user;
+    }    
+
     // SELECIONAR APENAS O NOME PARA TELA DE INÍCIO
     selectName(email) {
         const user = User.findOne({ email });

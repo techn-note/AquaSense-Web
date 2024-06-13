@@ -10,6 +10,11 @@ class TanqueService {
         return tanque
     }
 
+    SelectOne(numero) {
+        const tanque = Tanque.findOne({numero: numeor})
+        return tanque
+    }
+
     // Cadastrar um Novo Tanque
     Create(nome, capacidade, numero) {
         const newTanque = new Tanque({

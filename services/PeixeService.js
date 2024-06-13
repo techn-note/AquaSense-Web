@@ -1,3 +1,4 @@
+import peixe from "../models/Peixe.js";
 import peixe from "../models/Peixe.js"
 import mongoose from "mongoose"
 
@@ -10,10 +11,15 @@ class PeixeService {
         return peixe;
     }
 
+    SelectOne(nomePeixe) {
+        const peixe = Peixe.findOne({nomePeixe: nomePeixe})
+        return peixe
+    }
+
     // Cadastrar um novo peixe
-    create(nome, idade, especie, peso, quantidade) {
+    create(nomePeixe, idade, especie, peso, quantidade) {
         const newPeixe = new Peixe({
-            nome: nome,
+            nomePeixe: nomePeixe,
             idade: idade,
             especie: especie,
             peso: peso,
@@ -23,24 +29,24 @@ class PeixeService {
     }
 
     //EXCLUIR um Peixe
-    Delete(nome) {
-        Peixe.findByIdAndDelete(nome).then(() => {
-            console.log(`Peixe com nome "${nome}" foi deletado do sistema.`)
+    Delete(nomePeixe) {
+        Peixe.findByIdAndDelete(nomePeixe).then(() => {
+            console.log(`Peixe com nomePeixe "${nomePeixe}" foi deletado do sistema.`)
         }).catch(err => {
             console.log(err)
         })
     }
 
     // ALTERAR um PEIXE
-    Update(nome, idade, especie, peso, quantidade) {
-        Peixe.findByIdAndUpdate(nome, {
-            nome: nome,
+    Update(nomePeixe, idade, especie, peso, quantidade) {
+        Peixe.findByIdAndUpdate(nomePeixe, {
+            nomePeixe: nomePeixe,
             idade : idade,
             especie : especie,
             peso : peso,
             quantidade : quantidade
         }).then(() => {
-            console.log(`Peixe com nome "${nome}" alterado com sucesso`)
+            console.log(`Peixe com nomePeixe "${nomePeixe}" alterado com sucesso`)
         }).catch(err => {
             console.log(err)
         })
