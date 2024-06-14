@@ -1,3 +1,21 @@
 <%- include('partials/head.ejs') %>
 <%- include('partials/header.ejs') %>
+
+
+
+<script>
+    let angulo = 0;
+
+    function rotacionarImagem() {
+        angulo += 90;
+        const radianos = angulo * Math.PI / 180;
+        const cos = Math.cos(radianos);
+        const sin = Math.sin(radianos);
+
+        const transformMatrix = `matrix(${cos}, ${sin}, ${-sin}, ${cos}, 0, 0)`;
+
+        document.getElementById('imagem').style.transform = transformMatrix;
+    }
+</script>
+
 <%- include('partials/foot.ejs') %>
