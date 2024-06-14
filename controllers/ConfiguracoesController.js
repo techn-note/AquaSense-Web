@@ -2,6 +2,7 @@ import express from "express";
 import UserService from "../services/UserService.js";
 import bcrypt from "bcrypt";
 import Auth from "../middleware/Auth.js";
+import upload from "../middleware/upload.js";
 import { getUserImagePath } from "../services/userImagem.js";
 
 const router = express.Router();
@@ -32,7 +33,6 @@ router.get("/configuracoes", Auth, async (req, res) => {
     }
 });
 
-
 router.get("/alterar", Auth, async (req, res) => {
     try {
         const user = req.session.user;
@@ -59,14 +59,11 @@ router.get("/alterar", Auth, async (req, res) => {
     }
 });
 
-
 router.post("/alterar", Auth, async (req, res) => {
-    
     const { name, email, newPassword } = req.body;
     const user = req.session.user;
 
     try {
-
         const usuario = await UserService.SelectOne(user.email);
 
         if (!usuario) {
@@ -107,17 +104,25 @@ router.post("/autenticar", async (req, res) => {
         const correct = bcrypt.compareSync(password, usuario.password);
 
         if (correct) {
-
             req.flash("success", "Senha confirmada com sucesso!");
             res.redirect("/alterar");
         } else {
-
             req.flash("danger", "Senha incorreta. Tente novamente.");
             res.redirect("/configuracoes");
         }
     } catch (error) {
         console.error(error);
         res.status(500).send(`Erro ao autenticar usuário: ${error.message}`);
+    }
+});
+
+router.post("/upload-imagem", Auth, upload.single('imagem'), async (req, res) => {
+    try {
+        req.flash("success", "Imagem de perfil atualizada com sucesso!");
+        res.redirect("/configuracoes");
+    } catch (error) {
+        console.error(error);
+        res.status(500).send(`Erro ao fazer upload da imagem: ${error.message}`);
     }
 });
 

@@ -1,7 +1,7 @@
 
 /* Cabeçalho */
 header.header {
-  background-color: var(----cor-primaria_landpage);
+  background-color: var(--cor-primaria_landpage);
 }
 
 .container__main {
