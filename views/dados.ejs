@@ -1,421 +1,73 @@
 <%- include('partials/head.ejs') %>
 <%- include('partials/header.ejs') %>
-<div class="container my-4">
-  <div class="row modal__main p-4">
-    <div class="container-canvas">
-      <div class="modal__graphic__canvas"><canvas id="myChartPH"></canvas></div>
-      <div class="modal__graphic__canvas"><canvas class="modal__graphic__canvas" id="myChartOxigenacao"></canvas></div>
-      <div class="modal__graphic__canvas"><canvas class="modal__graphic__canvas" id="myChartTemperatura"></canvas></div>
-      <div class="modal__graphic__canvas"><canvas class="modal__graphic__canvas" id="myChartAmonia"></canvas></div>
-      <div class="modal__graphic__canvas"><canvas class="modal__graphic__canvas" id="myChartVolume"></canvas></div>
+<div class="container">
+  <div class="row modal__main shadow-none p-4">
+    <div class="col-md-6 container-canvas">
+      <div class="modal__graphic__canvas p-2"><canvas class="rounded" id="myChartPH"></canvas></div>
+      <div class="modal__graphic__canvas p-2"><canvas class="rounded" id="myChartOxigenacao"></canvas></div>
+      <div class="modal__graphic__canvas p-2"><canvas class="rounded" id="myChartTemperatura"></canvas></div>
+      <div class="modal__graphic__canvas p-2"><canvas class="rounded" id="myChartAmonia"></canvas></div>
+      <div class="modal__graphic__canvas p-2"><canvas class="rounded" id="myChartVolume"></canvas></div>
+      <div class="modal__graphic__canvas col-6 mx-auto">
+        <a href=""><button class="btn btn-primary button__large">Ver Tanques</button></a>
+        <a href=""><button class="btn btn-primary button__large">Ver Peixes</button></a>
+        <a href="/pdf"><button class="btn btn-primary button__large">Gerar Pdf</button></a>
+      </div>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <!-- GRÁFICO DE PH -->
-
-    <script>
-      document.addEventListener('DOMContentLoaded', (event) => {
-        const ctx = document.getElementById('myChartPH').getContext('2d');
-        const phSensorData = <%- JSON.stringify(ph) %>;
-
-        // Extrair e formatar o dia do sensor de pH
-        const dataLabels = phSensorData.map(entry => {
-          const date = new Date(entry.data);
-          return date.getDate();
-        });
-
-        const dataValues = phSensorData.map(entry => entry.valor);
-
-        new Chart(ctx, {
-          type: 'line',
-          data: {
-            labels: dataLabels,
-            datasets: [{
-              label: 'pH',
-              data: dataValues,
-              borderColor: 'rgba(75, 192, 192, 1)',
-              backgroundColor: 'rgba(75, 192, 192, 0.2)',
-              borderWidth: 2,
-              tension: 0.1,
-              fill: true // Preencher a área abaixo da linha
-            }]
-          },
-          options: {
-            responsive: true,
-            plugins: {
-              legend: {
-                display: true,
-                position: 'top',
-              },
-              title: {
-                display: true,
-                text: 'Níveis de pH ao longo dos dias'
-              }
-            },
-            scales: {
-              x: {
-                display: true,
-                title: {
-                  display: true,
-                  text: 'Dia'
-                }
-              },
-              y: {
-                display: true,
-                beginAtZero: true,
-                title: {
-                  display: true,
-                  text: 'Valor do pH'
-                }
-              }
-            }
-          }
-        });
-      });
-    </script>
-
-    <!-- GRÁFICO DE OXIGENAÇÃO -->
-
-    <script>
-      document.addEventListener('DOMContentLoaded', (event) => {
-        const ctx = document.getElementById('myChartOxigenacao').getContext('2d');
-        const oxigenacaoSensorData = <%- JSON.stringify(oxigenacao) %>;
-
-        // Extrair e formatar o dia do sensor de oxigenação
-        const dataLabels = oxigenacaoSensorData.map(entry => {
-          const date = new Date(entry.data);
-          return date.getDate();
-        });
-
-        const dataValues = oxigenacaoSensorData.map(entry => entry.valor);
-
-        new Chart(ctx, {
-          type: 'line',
-          data: {
-            labels: dataLabels,
-            datasets: [{
-              label: 'Oxigenação',
-              data: dataValues,
-              borderColor: 'rgba(153, 204, 255, 1)', // Azul pastel
-              backgroundColor: 'rgba(153, 204, 255, 0.5)', // Azul pastel claro transparente
-              pointBorderColor: 'rgba(153, 204, 255, 1)', // Azul pastel para a borda dos pontos
-              borderWidth: 2,
-              pointRadius: 3,
-              tension: 0.4,
-              fill: true // Preencher a área abaixo da linha
-            }]
-          },
-          options: {
-            responsive: true,
-            plugins: {
-              legend: {
-                display: true,
-                position: 'top',
-                labels: {
-                  color: 'rgba(102, 153, 204, 1)' // Azul pastel para a legenda
-                }
-              },
-              title: {
-                display: true,
-                text: 'Níveis de Oxigenação ao longo dos dias',
-                color: 'rgba(102, 153, 204, 1)', // Azul pastel para o título
-                font: {
-                  size: 18
-                }
-              }
-            },
-            scales: {
-              x: {
-                display: true,
-                title: {
-                  display: true,
-                  text: 'Dia',
-                  color: 'rgba(102, 153, 204, 1)', // Azul pastel para o título do eixo x
-                  font: {
-                    size: 14
-                  }
-                },
-                ticks: {
-                  color: 'rgba(102, 153, 204, 1)' // Azul pastel para os rótulos do eixo x
-                }
-              },
-              y: {
-                display: true,
-                beginAtZero: true,
-                title: {
-                  display: true,
-                  text: 'Valor da Oxigenação',
-                  color: 'rgba(102, 153, 204, 1)', // Azul pastel para o título do eixo y
-                  font: {
-                    size: 14
-                  }
-                },
-                ticks: {
-                  color: 'rgba(102, 153, 204, 1)' // Azul pastel para os rótulos do eixo y
-                }
-              }
-            }
-          }
-        });
-      });
-    </script>
-
-    <!-- GRÁFICO DE TEMPERATURA -->
-
-    <script>
-      document.addEventListener('DOMContentLoaded', (event) => {
-        const ctx = document.getElementById('myChartTemperatura').getContext('2d');
-        const temperaturaSensorData = <%- JSON.stringify(temperatura) %>;
-
-        // Extrair e formatar o dia do sensor de temperatura
-        const dataLabels = temperaturaSensorData.map(entry => {
-          const date = new Date(entry.data);
-          return date.getDate();
-        });
-
-        const dataValues = temperaturaSensorData.map(entry => entry.valor);
-
-        new Chart(ctx, {
-          type: 'line',
-          data: {
-            labels: dataLabels,
-            datasets: [{
-              label: 'Temperatura',
-              data: dataValues,
-              borderColor: 'rgba(255, 153, 102, 1)', // Laranja pastel
-              backgroundColor: 'rgba(255, 204, 153, 0.5)', // Laranja claro transparente
-              borderWidth: 2,
-              tension: 0.4,
-              fill: true // Preencher a área abaixo da linha
-            }]
-          },
-          options: {
-            responsive: true,
-            plugins: {
-              legend: {
-                display: true,
-                position: 'top',
-                labels: {
-                  color: 'rgba(255, 153, 102, 1)' // Laranja pastel para a legenda
-                }
-              },
-              title: {
-                display: true,
-                text: 'Temperatura em °C ao longo dos dias',
-                color: 'rgba(255, 153, 102, 1)', // Laranja pastel para o título
-                font: {
-                  size: 18
-                }
-              }
-            },
-            scales: {
-              x: {
-                display: true,
-                title: {
-                  display: true,
-                  text: 'Dia',
-                  color: 'rgba(255, 153, 102, 1)', // Laranja pastel para o título do eixo x
-                  font: {
-                    size: 14
-                  }
-                },
-                ticks: {
-                  color: 'rgba(255, 153, 102, 1)' // Laranja pastel para os rótulos do eixo x
-                }
-              },
-              y: {
-                display: true,
-                beginAtZero: true,
-                title: {
-                  display: true,
-                  text: 'Temperatura °C',
-                  color: 'rgba(255, 153, 102, 1)', // Laranja pastel para o título do eixo y
-                  font: {
-                    size: 14
-                  }
-                },
-                ticks: {
-                  color: 'rgba(255, 153, 102, 1)' // Laranja pastel para os rótulos do eixo y
-                }
-              }
-            }
-          }
-        });
-      });
-    </script>
-
-    <!-- GRÁFICO DE AMONIA -->
-    <script>
-      document.addEventListener('DOMContentLoaded', (event) => {
-        const ctx = document.getElementById('myChartAmonia').getContext('2d');
-        const amoniaSensorData = <%- JSON.stringify(amonia) %>;
-
-        // Extrair e formatar o dia do sensor de amônia
-        const dataLabels = amoniaSensorData.map(entry => {
-          const date = new Date(entry.data);
-          return date.getDate();
-        });
-
-        const dataValues = amoniaSensorData.map(entry => entry.valor);
-
-        new Chart(ctx, {
-          type: 'line',
-          data: {
-            labels: dataLabels,
-            datasets: [{
-              label: 'Amônia',
-              data: dataValues,
-              borderColor: 'rgba(102, 204, 102, 1)', // Verde pastel
-              backgroundColor: 'rgba(153, 255, 153, 0.5)', // Verde claro transparente
-              borderWidth: 2,
-              tension: 0.4,
-              fill: true // Preencher a área abaixo da linha
-            }]
-          },
-          options: {
-            responsive: true,
-            plugins: {
-              legend: {
-                display: true,
-                position: 'top',
-                labels: {
-                  color: 'rgba(102, 204, 102, 1)' // Verde pastel para a legenda
-                }
-              },
-              title: {
-                display: true,
-                text: 'Níveis de Amônia ao longo dos dias',
-                color: 'rgba(102, 204, 102, 1)', // Verde pastel para o título
-                font: {
-                  size: 18
-                }
-              }
-            },
-            scales: {
-              x: {
-                display: true,
-                title: {
-                  display: true,
-                  text: 'Dia',
-                  color: 'rgba(102, 204, 102, 1)', // Verde pastel para o título do eixo x
-                  font: {
-                    size: 14
-                  }
-                },
-                ticks: {
-                  color: 'rgba(102, 204, 102, 1)' // Verde pastel para os rótulos do eixo x
-                }
-              },
-              y: {
-                display: true,
-                beginAtZero: true,
-                title: {
-                  display: true,
-                  text: 'Níveis de Amônia',
-                  color: 'rgba(102, 204, 102, 1)', // Verde pastel para o título do eixo y
-                  font: {
-                    size: 14
-                  }
-                },
-                ticks: {
-                  color: 'rgba(102, 204, 102, 1)' // Verde pastel para os rótulos do eixo y
-                }
-              }
-            }
-          }
-        });
-      });
-    </script>
-
-
-    <!-- GRÁFICO DE VOLUME -->
-
-    <script>
-      document.addEventListener('DOMContentLoaded', (event) => {
-        const ctx = document.getElementById('myChartVolume').getContext('2d');
-        const volumeSensorData = <%- JSON.stringify(volume) %>;
-
-        // Extrair e formatar o dia do sensor de volume
-        const dataLabels = volumeSensorData.map(entry => {
-          const date = new Date(entry.data);
-          return date.getDate();
-        });
-
-        const dataValues = volumeSensorData.map(entry => entry.valor);
-
-        new Chart(ctx, {
-          type: 'line',
-          data: {
-            labels: dataLabels,
-            datasets: [{
-              label: 'Volume',
-              data: dataValues,
-              borderColor: 'rgba(102, 153, 255, 1)', // Azul pastel
-              backgroundColor: 'rgba(153, 204, 255, 0.5)', // Azul claro transparente
-              borderWidth: 2,
-              tension: 0.4,
-              fill: true // Preencher a área abaixo da linha
-            }]
-          },
-          options: {
-            responsive: true,
-            plugins: {
-              legend: {
-                display: true,
-                position: 'top',
-                labels: {
-                  color: 'rgba(102, 153, 255, 1)' // Azul pastel para a legenda
-                }
-              },
-              title: {
-                display: true,
-                text: 'Volume ao longo dos dias',
-                color: 'rgba(102, 153, 255, 1)', // Azul pastel para o título
-                font: {
-                  size: 18
-                }
-              }
-            },
-            scales: {
-              x: {
-                display: true,
-                title: {
-                  display: true,
-                  text: 'Dia',
-                  color: 'rgba(102, 153, 255, 1)', // Azul pastel para o título do eixo x
-                  font: {
-                    size: 14
-                  }
-                },
-                ticks: {
-                  color: 'rgba(102, 153, 255, 1)' // Azul pastel para os rótulos do eixo x
-                }
-              },
-              y: {
-                display: true,
-                beginAtZero: true,
-                title: {
-                  display: true,
-                  text: 'Volume',
-                  color: 'rgba(102, 153, 255, 1)', // Azul pastel para o título do eixo y
-                  font: {
-                    size: 14
-                  }
-                },
-                ticks: {
-                  color: 'rgba(102, 153, 255, 1)' // Azul pastel para os rótulos do eixo y
-                }
-              }
-            }
-          }
-        });
-      });
-    </script>
   </div>
 </div>
-<a href="/pdf" target="_blank">
-  <button>Gerar PDF</button>
-</a>
 
 <%- include('partials/foot.ejs') %>
+
+<!-- Importing Chart.js and Isotope.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    const phSensorData = <%- JSON.stringify(ph) %>;
+    const oxigenacaoSensorData = <%- JSON.stringify(oxigenacao) %>;
+    const temperaturaSensorData = <%- JSON.stringify(temperatura) %>;
+    const amoniaSensorData = <%- JSON.stringify(amonia) %>;
+    const volumeSensorData = <%- JSON.stringify(volume) %>;
+
+    const createChart = (ctx, data, label, borderColor, backgroundColor) => {
+      const dataLabels = data.map(entry => new Date(entry.data).getDate());
+      const dataValues = data.map(entry => entry.valor);
+
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: dataLabels,
+          datasets: [{
+            label: label,
+            data: dataValues,
+            borderColor: borderColor,
+            backgroundColor: backgroundColor,
+            borderWidth: 2,
+            tension: 0.4,
+            fill: true
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: true, position: 'top' },
+            title: { display: true, text: `${label} ao longo dos dias` }
+          },
+          scales: {
+            x: { display: true, title: { display: true, text: 'Dia' } },
+            y: { display: true, beginAtZero: true, title: { display: true, text: `Valor de ${label}` } }
+          }
+        }
+      });
+    };
+
+    createChart(document.getElementById('myChartPH').getContext('2d'), phSensorData, 'pH', 'rgba(75, 192, 192, 1)', 'rgba(75, 192, 192, 0.2)');
+    createChart(document.getElementById('myChartOxigenacao').getContext('2d'), oxigenacaoSensorData, 'Oxigenação', 'rgba(153, 204, 255, 1)', 'rgba(153, 204, 255, 0.5)');
+    createChart(document.getElementById('myChartTemperatura').getContext('2d'), temperaturaSensorData, 'Temperatura', 'rgba(255, 153, 102, 1)', 'rgba(255, 204, 153, 0.5)');
+    createChart(document.getElementById('myChartAmonia').getContext('2d'), amoniaSensorData, 'Amônia', 'rgba(102, 204, 102, 1)', 'rgba(153, 255, 153, 0.5)');
+    createChart(document.getElementById('myChartVolume').getContext('2d'), volumeSensorData, 'Volume', 'rgba(102, 153, 255, 1)', 'rgba(153, 204, 255, 0.5)');
+  });
+</script>

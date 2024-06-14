@@ -234,7 +234,8 @@ a.nav__btn {
 }
 
 .modal__main {
-  height: 80vh;
+  display: flex;
+  justify-content: center;
   border-radius: 10px 10px 10px 10px;
   box-shadow: 0 4px 8px rgba(92, 92, 92, 0.537);
 }
@@ -265,14 +266,20 @@ canvas {
 
 .container-canvas {
   justify-content: center;
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
+  width: 80vw !important; 
+  min-height: 80vh !important;
 }
 
 .modal__graphic__canvas {
-  gap: 20px;
-  width: 425px;
-  height: auto;
-  flex-shrink: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 200px;
+  width: 400px;
+}
+
+
+.button__large {
+  width: 300px;
 }
