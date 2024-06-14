@@ -15,10 +15,10 @@
           </div>
         </div>
         <nav class="navbar">
-              <a class="nav-link nav__btn btn btn-primary <%= (url === "/home") ? 'active' : '' %>  mx-1" href="/home"><i class="fas fa-home"></i> Início</a>
-              <a class="nav-link nav__btn btn btn-primary <%= (url === "/dados") ? 'active' : '' %> mx-1" href="/dados"><i class="fas fa-chart-line"></i> Dados</a>
-              <a class="nav-link nav__btn btn btn-primary <%= (url === "/configuracoes") ? 'active' : '' %> mx-1" href="/configuracoes"><i class="fas fa-cog"></i> Configurações</a>
-              <a class="nav-link nav__btn btn btn-primary mx-1" href="/logout"><i class="fas fa-sign-out-alt"></i> Sair</a>
+              <a class="nav-link nav__btn btn btn-primary <%= (url === "/home") ? 'active' : 'inactive' %>  mx-1" href="/home"><i class="fas fa-home"></i> Início</a>
+              <a class="nav-link nav__btn btn btn-primary <%= (url === "/dados") ? 'active' : 'inactive' %> mx-1" href="/dados"><i class="fas fa-chart-line"></i> Dados</a>
+              <a class="nav-link nav__btn btn btn-primary <%= (url === "/configuracoes") ? 'active' : 'inactive' %> mx-1" href="/configuracoes"><i class="fas fa-cog"></i> Configurações</a>
+              <a class="nav-link nav__btn btn btn-primary inactive mx-1" href="/logout"><i class="fas fa-sign-out-alt"></i> Sair</a>
         </nav>
       </div>
     </div>

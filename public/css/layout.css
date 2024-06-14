@@ -53,6 +53,9 @@ div.container__form__title--auth h2 {
 
 a.nav__btn {
  width: 200px;
+ &:active {
+  background-color: var(--cor-primaria);
+ }
 }
 
 .nav-link {
@@ -65,15 +68,12 @@ a.nav__btn {
 
 .nav-link:hover {
   background-color: var(--cinza-claro); 
-  border: #0184ff 1px solid;
-  color: #0184ff;
+  border: var(--cor-primaria) 1px solid;
+  color: var(--cor-primaria);
 }
 
 
-.btn-primary {
-  border-radius: 5px;
-  padding: 10px;
-}
+
 .form__btn__secondary {
   text-align: center;
   margin-top: 10px;
@@ -96,7 +96,7 @@ a.nav__btn {
 
 @media (min-width: 840px) {
   section.modal--auth {
-    background: radial-gradient(#72bbff, #0184ff);
+    background: radial-gradient(#72bbff, var(--cor-primaria));
   }
 
   .login-form {
@@ -161,7 +161,7 @@ a.nav__btn {
 }
 
 .modal__main__title {
-  color: #007bff;;
+  color: var(--cor-primaria);
 }
 
 .general-characteristics {
@@ -242,7 +242,7 @@ a.nav__btn {
 
 .status {
   text-align: center;
-  background-color: #007bff;
+  background-color: var(--cor-primaria);
   color: #fff;
   padding: 20px;
   border-radius: 0px 10px 10px 0px;
@@ -282,4 +282,20 @@ canvas {
 
 .button__large {
   width: 300px;
+}
+
+.config__profile {
+  display: flex;
+  justify-content: center;
+  min-height: 300px;
+}
+
+.config__profile__image {
+  width: 100%;
+  height: 100%;
+  flex-grow: 1;
+  &:hover {
+    filter: brightness(20%), blur(20%);
+    animation: .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
 }
