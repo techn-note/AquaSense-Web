@@ -2,59 +2,98 @@
 <%- include('partials/header.ejs') %>
 
 <div class="container my-4">
-    <div class="row modal__main justify-content-center">
-        <div class="col-md-6">
-            <div class="row text-center my-4">
-                <h1 class="modal__main__title fw-semibold">Família</h1>
-            </div>
-            <div class="config__family__images">
-                <img src="/imgs/icons/icon-add.svg" alt="Profile Image">
-            </div>
+    <div class="row modal__main p-4 justify-content-center">
+      <div class="col-md-6 d-flex flex-column">
+        <div class="row text-center my-4">
+          <h1 class="modal__main__title fw-semibold">Família</h1>
         </div>
-        <div class="col-md-6 d-flex flex-column align-items-center">
-            <div class="config__profile rounded-circle"><img src="/imgs/image-profile.svg" class="config__profile__image rounded-circle align-self-center"  alt="Profile"></div>
-            <div class="d-flex flex-column">
-                <input type="text">
-                <input type="text">
-                <input type="text">
-            </div>
+        <div class="config__family__images flex-grow-1">
+          <img src="/imgs/icons/icon-add.svg" alt="Profile Image">
         </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="card">
-        <div class="card-header">
-            <h1>Configurações</h1>
+        <div class="d-flex justify-content-center gap-3 align-items-center">
+          <p>-------------------</p>
+          <p>Não Há Membros na Familia</p>
+          <p>-------------------</p>
         </div>
-        <div class="card-body">
-            <form action="/upload-imagem" method="POST" enctype="multipart/form-data">
+      </div>
+      <div class="col-md-6 d-flex flex-column align-items-center border-start border-primary border-4">
+        <div class="config__profile rounded-circle mb-3">
+          <img src="<%= user.image %>" class="config__profile__image rounded-circle align-self-center" alt="Profile">
+          <i class="fas fa-edit edit-icon"></i>
+        </div>
+        <div>
+            <form class="row px-5 ">
                 <div class="form-group">
-                    <label for="imagem">Imagem de Perfil:</label>
-                    <input type="file" id="imagem" name="imagem" accept="image/*">
+                    <label for="name">Nome</label>
+                    <input type="text" class="form-control disabled" id="name" placeholder="<%= user.name %>">
                 </div>
                 <div class="form-group">
-                    <img src="<%= user.image %>" alt="Imagem do Usuário">
+                    <label for="email">E-mail</label>
+                    <input type="email" class="form-control" id="email" placeholder="<%= user.email %>">
                 </div>
-                <button type="submit">Enviar Imagem</button>
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" class="form-control" id="password" placeholder="********************">
+                </div>
+                <div class="form-group px-5">
+                  <input type="submit" class="btn btn-primary form-control" value="Editar">
+                </div>
+                
             </form>
         </div>
+      </div>
     </div>
-</div>
+  </div>
 
-<script>
+
+  <div id="editModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Editar Imagem de Perfil</h2>
+      <form action="/upload-imagem" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="imagem">Escolha uma nova imagem de perfil:</label>
+          <input type="file" id="imagem" name="imagem" accept="image/*">
+        </div>
+        <button type="submit">Salvar</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const profileImage = document.querySelector('.config__profile__image');
+      const modal = document.getElementById('editModal');
+      const closeModal = document.querySelector('.close');
+
+      profileImage.addEventListener('click', function () {
+        modal.style.display = 'flex';
+      });
+
+      closeModal.addEventListener('click', function () {
+        modal.style.display = 'none';
+      });
+
+      window.addEventListener('click', function (event) {
+        if (event.target === modal) {
+          modal.style.display = 'none';
+        }
+      });
+    });
+
     let angulo = 0;
 
     function rotacionarImagem() {
-        angulo += 90;
-        const radianos = angulo * Math.PI / 180;
-        const cos = Math.cos(radianos);
-        const sin = Math.sin(radianos);
+      angulo += 90;
+      const radianos = angulo * Math.PI / 180;
+      const cos = Math.cos(radianos);
+      const sin = Math.sin(radianos);
 
-        const transformMatrix = `matrix(${cos}, ${sin}, ${-sin}, ${cos}, 0, 0)`;
+      const transformMatrix = `matrix(${cos}, ${sin}, ${-sin}, ${cos}, 0, 0)`;
 
-        document.getElementById('imagem').style.transform = transformMatrix;
+      document.getElementById('imagem').style.transform = transformMatrix;
     }
-</script>
+  </script>
+
 
 <%- include('partials/foot.ejs') %>

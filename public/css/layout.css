@@ -290,12 +290,85 @@ canvas {
   min-height: 300px;
 }
 
+.profile__image {
+  width: 100%;
+  max-width: 55px;
+}
+
 .config__profile__image {
   width: 100%;
+  max-width: 300px;
   height: 100%;
   flex-grow: 1;
   &:hover {
-    filter: brightness(20%), blur(20%);
-    animation: .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    filter: blur(5px);
+    transition: .2s;
   }
+  &:active {
+    
+    filter: blur(5px) brightness(0.2); 
+  }
+}
+
+.config__profile {
+  position: relative;
+}
+
+.config__profile__image {
+  cursor: pointer;
+}
+
+.edit-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  font-size: 2rem;
+  color: var(--branco);
+  background-color: var(--cor-primaria);
+  border-radius: 99%;
+  padding: 10px;
+  pointer-events: none;
+}
+
+.config__profile:hover .edit-icon {
+  display: block;
+}
+
+.modal {
+  display: none; /* Escondido por padrão */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  width: 80%;
+  max-width: 500px;
+  margin: auto;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
