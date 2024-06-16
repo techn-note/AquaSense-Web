@@ -337,9 +337,9 @@ canvas {
 }
 
 .modal {
-  display: none; /* Escondido por padrão */
+  display: flex;
   position: fixed;
-  z-index: 1000;
+  z-index: 1050;
   left: 0;
   top: 0;
   width: 100%;
@@ -371,4 +371,19 @@ canvas {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+.line {
+  flex: 1;
+  border-bottom: 1px solid var(--cinza-texto);
+}
+
+.hidden {
+  display: none;
+}
+
+.profile-img img{
+  position: relative;
+  height: 300px;
+  width: 400px;
 }

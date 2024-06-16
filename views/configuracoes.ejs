@@ -3,97 +3,157 @@
 
 <div class="container my-4">
     <div class="row modal__main p-4 justify-content-center">
-      <div class="col-md-6 d-flex flex-column">
-        <div class="row text-center my-4">
-          <h1 class="modal__main__title fw-semibold">Família</h1>
+        <div class="col-md-6 d-flex flex-column">
+            <div class="row text-center my-4">
+                <h1 class="modal__main__title fw-semibold">Família</h1>
+            </div>
+            <div class="config__family__images flex-grow-1">
+                <img src="/imgs/icons/icon-add.svg" alt="Profile Image">
+            </div>
+            <div class="d-flex justify-content-center gap-2 align-items-center">
+                <p class="line"></p>
+                <p>Não Há Membros na Familia</p>
+                <p class="line"></p>
+            </div>
         </div>
-        <div class="config__family__images flex-grow-1">
-          <img src="/imgs/icons/icon-add.svg" alt="Profile Image">
+        <div class="col-md-6 d-flex flex-column align-items-center border-start border-primary border-4">
+            <div class="config__profile rounded-circle mb-3">
+                <img src="<%= user.image %>" onclick="mostrarModal('#editModal')" class="config__profile__image rounded-circle align-self-center" alt="Profile">
+                <i class="fas fa-edit edit-icon" ></i>
+            </div>
+            <div>
+                <form class="row px-5">
+                    <div class="form-group">
+                        <label for="name">Nome</label>
+                        <input type="text" class="form-control disabled" id="name" placeholder="<%= user.name %>">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" class="form-control" id="email" placeholder="<%= user.email %>">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Senha</label>
+                        <input type="password" class="form-control" id="password" placeholder="********************">
+                    </div>
+                    <div class="form-group px-5">
+                        <input type="submit" class="btn btn-primary form-control" value="Editar">
+                    </div>
+                </form>
+            </div>
         </div>
-        <div class="d-flex justify-content-center gap-3 align-items-center">
-          <p>-------------------</p>
-          <p>Não Há Membros na Familia</p>
-          <p>-------------------</p>
-        </div>
-      </div>
-      <div class="col-md-6 d-flex flex-column align-items-center border-start border-primary border-4">
-        <div class="config__profile rounded-circle mb-3">
-          <img src="<%= user.image %>" class="config__profile__image rounded-circle align-self-center" alt="Profile">
-          <i class="fas fa-edit edit-icon"></i>
-        </div>
-        <div>
-            <form class="row px-5 ">
-                <div class="form-group">
-                    <label for="name">Nome</label>
-                    <input type="text" class="form-control disabled" id="name" placeholder="<%= user.name %>">
-                </div>
-                <div class="form-group">
-                    <label for="email">E-mail</label>
-                    <input type="email" class="form-control" id="email" placeholder="<%= user.email %>">
-                </div>
-                <div class="form-group">
-                    <label for="password">Senha</label>
-                    <input type="password" class="form-control" id="password" placeholder="********************">
-                </div>
-                <div class="form-group px-5">
-                  <input type="submit" class="btn btn-primary form-control" value="Editar">
-                </div>
-                
-            </form>
-        </div>
-      </div>
     </div>
-  </div>
+</div>
 
-
-  <div id="editModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>Editar Imagem de Perfil</h2>
-      <form action="/upload-imagem" method="POST" enctype="multipart/form-data">
-        <div class="form-group">
-          <label for="imagem">Escolha uma nova imagem de perfil:</label>
-          <input type="file" id="imagem" name="imagem" accept="image/*">
+<!-- <div id="accountModal" class="modal hidden">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirme sua senha</h5>
+                <button class="close btn" onclick="fecharModal()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h6>Para confirmar que você quer alterar seus dados de login, por favor digite sua senha</h6>
+            </div>
         </div>
-        <button type="submit">Salvar</button>
-      </form>
     </div>
-  </div>
+</div> -->
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const profileImage = document.querySelector('.config__profile__image');
-      const modal = document.getElementById('editModal');
-      const closeModal = document.querySelector('.close');
+<!-- Modal -->
+<div id="editModal" class="modal hidden">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Editar Imagem de Perfil</h5>
+                <button class="close btn" onclick="fecharModal('#editModal')" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Primeira Parte: Visualização da Imagem Atual -->
+                <div id="viewImageSection" class="profile-img">
+                    <form action="/upload-imagem" method="POST" class="d-flex flex-column justify-content-center" enctype="multipart/form-data">
+                        <img id="imagem" src="<%= user.image %>" name="imagem" alt="Imagem Atual" class="img-thumbnail">
+                        <div class="d-flex justify-content-between mt-3">
+                            <button class="btn px-3" type="button" onclick="rotacionarImagem()"><i class="fa-solid fa-rotate-right"></i></button>
+                            <button type="submit" class="btn btn-primary px-5">Salvar</button>
+                            <button class="btn px-3" type="button" onclick="mostrarTrocarImagem()"><i class="fa-solid fa-pen-to-square"></i></button>
+                        </div>
+                    </form>
+                </div>
+                <!-- Segunda Parte: Trocar Imagem -->
+                <div id="changeImageSection" class="hidden">
+                    <form id="uploadForm" action="/upload-imagem" method="POST" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="imagem">Escolha uma nova imagem de perfil:</label>
+                            <input type="file" class="form-control" id="imagem" name="imagem" accept="image/*" onchange="previewImagem(event)">
+                        </div>
+                        <div class="form-group preview-container">
+                            <img id="preview" src="#" alt="Pré-visualização da imagem" class="img-thumbnail hidden">
+                        </div>
+                        <div class="form-group d-flex justify-content-between mt-2">
+                            <button class="btn btn-primary" type="submit">Salvar</button>
+                            <button class="btn btn-secondary" type="button" onclick="cancelarTrocarImagem()">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-      profileImage.addEventListener('click', function () {
-        modal.style.display = 'flex';
-      });
+<script>
+    function mostrarModal(Nome) {
+        document.querySelector(Nome).classList.remove('hidden');
+    }
 
-      closeModal.addEventListener('click', function () {
-        modal.style.display = 'none';
-      });
+    function fecharModal(Nome) {
+        document.querySelector(Nome).classList.add('hidden');
+    }
 
-      window.addEventListener('click', function (event) {
-        if (event.target === modal) {
-          modal.style.display = 'none';
-        }
-      });
-    });
+    function mostrarTrocarImagem() {
+        document.getElementById('viewImageSection').classList.add('hidden');
+        document.getElementById('changeImageSection').classList.remove('hidden');
+    }
+
+    function cancelarTrocarImagem() {
+        document.getElementById('viewImageSection').classList.remove('hidden');
+        document.getElementById('changeImageSection').classList.add('hidden');
+        document.getElementById('uploadForm').reset();
+        document.getElementById('preview').src = '#';
+        document.getElementById('preview').classList.add('hidden');
+    }
+
+    function previewImagem(event) {
+        const preview = document.getElementById('preview');
+        preview.src = URL.createObjectURL(event.target.files[0]);
+        preview.classList.remove('hidden');
+    }
 
     let angulo = 0;
 
-    function rotacionarImagem() {
-      angulo += 90;
-      const radianos = angulo * Math.PI / 180;
-      const cos = Math.cos(radianos);
-      const sin = Math.sin(radianos);
+function rotacionarImagem() {
+    angulo += 90;
+    const radianos = angulo * Math.PI / 180;
+    const cos = Math.cos(radianos);
+    const sin = Math.sin(radianos);
 
-      const transformMatrix = `matrix(${cos}, ${sin}, ${-sin}, ${cos}, 0, 0)`;
+    const transformMatrix = `matrix(${cos}, ${sin}, ${-sin}, ${cos}, 0, 0)`;
 
-      document.getElementById('imagem').style.transform = transformMatrix;
+    document.getElementById('imagem').style.transform = transformMatrix;
+}
+    
+
+    // Fecha o modal ao clicar fora dele
+    window.onclick = function(event) {
+        const modal = document.getElementById('editModal');
+        if (event.target == modal) {
+            fecharModal();
+        }
     }
-  </script>
+</script>
+
 
 
 <%- include('partials/foot.ejs') %>
