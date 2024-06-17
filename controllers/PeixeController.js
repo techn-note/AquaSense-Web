@@ -58,7 +58,13 @@ router.get("/cadastroPeixe/delete/:id", (req, res) => {
         const id = req.params.id;
         PeixeService.SelectOne(id).then((peixe) => {
           res.render("cadastroPeixeEdit", {
-            peixes: peixe,
+            peixe: {
+                nomePeixe: peixe.nomePeixe,
+                idade: peixe.idade,
+                especie: peixe.especie,
+                peso: peixe.peso,
+                quantidade: peixe.quantidade
+            },
             user: {
                 name: user.name,
                 email: user.email,
