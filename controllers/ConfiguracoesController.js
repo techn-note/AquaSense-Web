@@ -4,6 +4,7 @@ import bcrypt from "bcrypt";
 import Auth from "../middleware/Auth.js";
 import upload from "../middleware/upload.js";
 import { getUserImagePath } from "../services/userImagem.js";
+import PeixeService from "../services/PeixeService.js";
 
 const router = express.Router();
 

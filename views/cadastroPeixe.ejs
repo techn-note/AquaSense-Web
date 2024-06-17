@@ -1,0 +1,62 @@
+<%- include('partials/head.ejs') %>
+<%- include('partials/header.ejs') %>
+<%- include ("partials/flash_message.ejs") %>
+<div class="container mt-3">
+    <h1 class="text-center">Cadastro de Peixes</h1>
+
+    <!-- Formulário de Adição de Peixes -->
+    <form id="peixeForm" action="/cadastroPeixe/new" method="POST">
+        <div class="form-group">
+            <label for="nomePeixe">Nome do Peixe</label>
+            <input type="text" class="form-control" id="nomePeixe" name="nomePeixe" required>
+        </div>
+        <div class="form-group">
+            <label for="idade">Idade</label>
+            <input type="number" class="form-control" id="idade" name="idade" required>
+        </div>
+        <div class="form-group">
+            <label for="especie">Espécie</label>
+            <input type="text" class="form-control" id="especie" name="especie" required>
+        </div>
+        <div class="form-group">
+            <label for="peso">Peso (kg)</label>
+            <input type="number" class="form-control" id="peso" name="peso" required>
+        </div>
+        <div class="form-group">
+            <label for="quantidade">Quantidade</label>
+            <input type="number" class="form-control" id="quantidade" name="quantidade" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Adicionar Peixe</button>
+    </form>
+
+    <!-- Tabela de Peixes -->
+    <h2 class="text-center mt-5">Lista de Peixes</h2>
+    <table class="table table-bordered mt-3">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Idade</th>
+                <th>Espécie</th>
+                <th>Peso (kg)</th>
+                <th>Quantidade</th>
+            </tr>
+        </thead>
+        <tbody id="peixeTableBody">
+            <% peixes.forEach(peixe => { %>
+                <tr>
+                    <td><%= peixe.nomePeixe %></td>
+                    <td><%= peixe.idade %></td>
+                    <td><%= peixe.especie %></td>
+                    <td><%= peixe.peso %></td>
+                    <td><%= peixe.quantidade %></td>
+                    <td><a class="btn" style="color: orange;" href="/cadastroPeixe/edit/<%= peixe._id %>">Editar</a></td>
+                    <td><a class="btn" style="color: red;" href="">Excluir</a></td>
+                </tr>
+                <% }) %>
+            </tbody>
+    </table>
+</div>
+</body>
+</html>
+
+<%- include('partials/foot.ejs') %>

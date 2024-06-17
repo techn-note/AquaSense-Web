@@ -1,7 +1,6 @@
 import express from "express";
 import UserService from "../services/UserService.js";
 import SensoresService from "../services/SensoresService.js";
-import PeixeService from "../services/PeixeService.js";
 import TanqueService from "../services/TanqueService.js";
 import Auth from "../middleware/Auth.js";
 import PDFPrinter from "pdfmake";
@@ -143,38 +142,7 @@ router.get('/pdf', Auth, async (req, res) => {
     }
 });
 
-router.get("/cadastroPeixe", Auth, async (req, res) => {
-    try {
-        const user = req.session.user;
-        const userImage = getUserImagePath(user.name);
 
-        const nomePeixe = req.body.nomePeixe;
-        const idade = req.body.idade;
-        const especie = req.body.especie;
-        const peso = req.body.peso;
-        const quantidade = req.body.quantidade;
-
-        const peixe = await PeixeService.SelectOne(nomePeixe);
-
-        if (peixe === undefined) {
-            await PeixeService.create(nomePeixe, idade, especie, peso, quantidade);
-            res.redirect("/dados");
-        } else {
-            req.flash("danger", "O peixe já foi cadastrado! Altere as informações se necessário");
-            res.render("cadastroPeixe", {
-                user: {
-                    name: user.name,
-                    email: user.email,
-                    image: userImage
-                },
-                url: req.url,
-                message: req.flash("danger")
-            });
-        }
-    } catch (error) {
-        res.status(500).send(`Erro ao cadastrar peixe: ${error.message}`);
-    }
-});
 
 router.get("/cadastroTanque", Auth, async (req, res) => {
     try {
@@ -191,7 +159,6 @@ router.get("/cadastroTanque", Auth, async (req, res) => {
             await TanqueService.Create(nomeTanque, capacidade, numero);
             res.redirect("/dados");
         } else {
-            req.flash("danger", "O tanque já foi cadastrado, confira a numeração!");
             res.render("cadastroTanque", {
                 user: {
                     name: user.name,

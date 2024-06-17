@@ -1,0 +1,29 @@
+<%- include('partials/head.ejs') %>
+<%- include('partials/header.ejs') %>
+<%- include ("partials/flash_message.ejs") %>
+<h1><% peixes.nomePeixe %></h1>
+<form id="peixeForm" action="/cadastroPeixe/update/<%= peixes._id %>" method="POST">
+    <div class="form-group">
+        <label for="nomePeixe">Nome do Peixe</label>
+        <input type="text" class="form-control" id="nomePeixe" value="<% peixes.nomePeixe %>" required>
+    </div>
+    <div class="form-group">
+        <label for="idade">Idade</label>
+        <input type="number" class="form-control" id="idade" value="<% peixes.idade %>"  required>
+    </div>
+    <div class="form-group">
+        <label for="especie">Espécie</label>
+        <input type="text" class="form-control" id="especie" value="<% peixes.especie %>"  required>
+    </div>
+    <div class="form-group">
+        <label for="peso">Peso (kg)</label>
+        <input type="number" class="form-control" id="peso" value="<% peixes.peso %>" required>
+    </div>
+    <div class="form-group">
+        <label for="quantidade">Quantidade</label>
+        <input type="number" class="form-control" id="quantidade" value="<% peixes.quantidade %>"  required>
+    </div>
+    <button type="submit" class="btn btn-primary">Alterar Peixe</button>
+    <button type="button" class="btn btn-secondary me-2">Voltar</button>
+</form>
+<%- include('partials/foot.ejs') %>
