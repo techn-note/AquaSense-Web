@@ -181,17 +181,17 @@ a.nav__btn {
 }
 
 .general-characteristics__item--ammonia {
-  background-color: #DBAB4A;
+  background-color: var(--cor-perigo);
   color: var(--cinza-claro);
 }
 
 .general-characteristics__item--temperature {
-  background-color: #D9534F;
+  background-color: var(--cor-erro);
   color: var(--cinza-claro);
 }
 
 .general-characteristics__item--ph {
-  background-color: #0084FF;
+  background-color: var(--cor-primaria);
   color: var(--cinza-claro);
 }
 
@@ -242,10 +242,21 @@ a.nav__btn {
 
 .status {
   text-align: center;
-  background-color: var(--cor-primaria);
   color: #fff;
   padding: 20px;
   border-radius: 0px 10px 10px 0px;
+}
+
+.ok {
+  background-color: var(--cor-primaria);
+}
+
+.warning {
+  background-color: var(--cor-perigo);
+}
+
+.no-signal {
+  background-color: var(--cor-erro);
 }
 
 .status__icon {

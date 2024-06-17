@@ -11,6 +11,8 @@
   --estilo-fonte: "Outfit";
   --font-size-strong: bold;
   --font-size-thin: 300;
+  --cor-perigo: #DBAB4A;
+  --cor-erro: #D9534F;
 }
 
 html {
