@@ -142,36 +142,4 @@ router.get('/pdf', Auth, async (req, res) => {
     }
 });
 
-
-
-router.get("/cadastroTanque", Auth, async (req, res) => {
-    try {
-        const user = req.session.user;
-        const userImage = getUserImagePath(user.name);
-
-        const nomeTanque = req.body.nomeTanque;
-        const capacidade = req.body.capacidade;
-        const numero = req.body.numero;
-
-        const tanque = await TanqueService.SelectOne(numero);
-
-        if (tanque === undefined) {
-            await TanqueService.Create(nomeTanque, capacidade, numero);
-            res.redirect("/dados");
-        } else {
-            res.render("cadastroTanque", {
-                user: {
-                    name: user.name,
-                    email: user.email,
-                    image: userImage
-                },
-                url: req.url,
-                message: req.flash("danger")
-            });
-        }
-    } catch (error) {
-        res.status(500).send(`Erro ao cadastrar tanque: ${error.message}`);
-    }
-});
-
 export default router;

@@ -1,28 +1,28 @@
 <%- include('partials/head.ejs') %>
 <%- include('partials/header.ejs') %>
-<%- include ("partials/flash_message.ejs") %>
+<%- include('partials/flash_message.ejs') %>
 <form id="peixeForm" action="/cadastroPeixe/update/<%= peixe._id %>" method="POST">
     <div class="form-group">
         <label for="nomePeixe">Nome do Peixe</label>
-        <input type="text" class="form-control" id="nomePeixe" value="<% peixe.nomePeixe %>" required>
+        <input type="text" class="form-control" id="nomePeixe" name="nomePeixe" value="<%= peixe.nomePeixe %>" required>
     </div>
     <div class="form-group">
         <label for="idade">Idade</label>
-        <input type="number" class="form-control" id="idade" value="<% peixe.idade %>"  required>
+        <input type="number" class="form-control" id="idade" name="idade" value="<%= peixe.idade %>" required>
     </div>
     <div class="form-group">
         <label for="especie">Espécie</label>
-        <input type="text" class="form-control" id="especie" value="<% peixe.especie %>"  required>
+        <input type="text" class="form-control" id="especie" name="especie" value="<%= peixe.especie %>" required>
     </div>
     <div class="form-group">
         <label for="peso">Peso (kg)</label>
-        <input type="number" class="form-control" id="peso" value="<% peixe.peso %>" required>
+        <input type="number" class="form-control" id="peso" name="peso" value="<%= peixe.peso %>" required>
     </div>
     <div class="form-group">
         <label for="quantidade">Quantidade</label>
-        <input type="number" class="form-control" id="quantidade" value="<% peixe.quantidade %>"  required>
+        <input type="number" class="form-control" id="quantidade" name="quantidade" value="<%= peixe.quantidade %>" required>
     </div>
     <button type="submit" class="btn btn-primary">Alterar Peixe</button>
-    <button type="button" class="btn btn-secondary me-2">Voltar</button>
+    <a href="/cadastroPeixe"><button type="button" class="btn btn-secondary me-2">Voltar</button></a>
 </form>
 <%- include('partials/foot.ejs') %>

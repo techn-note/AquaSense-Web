@@ -1,0 +1,50 @@
+<%- include('partials/head.ejs') %>
+<%- include('partials/header.ejs') %>
+<%- include ("partials/flash_message.ejs") %>
+<div class="container mt-3">
+    <h1 class="text-center">Cadastro de Tanques</h1>
+
+    <!-- Formulário de Adição de tanques -->
+    <form id="tanqueForm" action="/cadastroTanque/new" method="POST">
+        <div class="form-group">
+            <label for="nometanque">Nome do tanque</label>
+            <input type="text" class="form-control" id="nometanque" name="nomeTanque" required>
+        </div>
+        <div class="form-group">
+            <label for="idade">Capacidade (L)</label>
+            <input type="number" class="form-control" id="capacidade" name="capacidade" required>
+        </div>
+        <div class="form-group">
+            <label for="especie">Número do Tanque</label>
+            <input type="number" class="form-control" id="numero" name="numero" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Adicionar Tanque</button>
+    </form>
+
+    <!-- Tabela de Tanques -->
+    <h2 class="text-center mt-5">Lista de Tanques</h2>
+    <table class="table table-bordered mt-3">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Capacidade</th>
+                <th>Número</th>
+            </tr>
+        </thead>
+        <tbody id="TanqueTableBody">
+            <% tanques.forEach(tanques => { %>
+                <tr>
+                    <td><%= tanques.nomeTanque %></td>
+                    <td><%= tanques.capacidade %></td>
+                    <td><%= tanques.numero %></td>
+                    <td><a class="btn" style="color: orange;" href="/cadastroTanque/edit/<%= tanques._id %>">Editar</a></td>
+                    <td><a class="btn" style="color: red;" href="/cadastroTanque/delete/<%= tanques._id %>">Excluir</a></td>
+                </tr>
+                <% }) %>
+            </tbody>
+    </table>
+</div>
+</body>
+</html>
+
+<%- include('partials/foot.ejs') %>

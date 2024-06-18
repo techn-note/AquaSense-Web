@@ -9,6 +9,7 @@ import HomeController from "./controllers/HomeController.js"
 import DadosController from "./controllers/DadosController.js"
 import ConfiguracoesController from "./controllers/ConfiguracoesController.js"
 import PeixeController from "./controllers/PeixeController.js"
+import TanqueController from "./controllers/TanqueController.js"
 
 import flash from 'express-flash'
 
@@ -44,6 +45,7 @@ app.use("/", HomeController)
 app.use("/", DadosController)
 app.use("/", ConfiguracoesController)
 app.use("/", PeixeController)
+app.use("/", TanqueController)
 
 app.get("/", function(req, res) {
     res.render("index")

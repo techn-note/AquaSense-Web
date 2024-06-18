@@ -10,10 +10,10 @@ class PeixeService {
         return peixe;
     }
 
-    SelectOne(nomePeixe) {
-        const peixe = Peixe.findOne({nomePeixe: nomePeixe})
-        return peixe
+    SelectOne(id) {
+        return Peixe.findById(id);
     }
+
 
     // Cadastrar um novo peixe
     create(nomePeixe, idade, especie, peso, quantidade) {
@@ -30,25 +30,29 @@ class PeixeService {
     //EXCLUIR um Peixe
     Delete(nomePeixe) {
         Peixe.findByIdAndDelete(nomePeixe).then(() => {
-            console.log(`Peixe com nomePeixe "${nomePeixe}" foi deletado do sistema.`)
         }).catch(err => {
             console.log(err)
         })
     }
 
     // ALTERAR um PEIXE
-    Update(nomePeixe, idade, especie, peso, quantidade) {
-        Peixe.findByIdAndUpdate(nomePeixe, {
-            nomePeixe: nomePeixe,
-            idade : idade,
-            especie : especie,
-            peso : peso,
-            quantidade : quantidade
-        }).then(() => {
-            console.log(`Peixe com nomePeixe "${nomePeixe}" alterado com sucesso`)
+    Update(id, nomePeixe, idade, especie, peso, quantidade) {
+        return Peixe.findByIdAndUpdate(
+            id,
+            {
+                nomePeixe,
+                idade,
+                especie,
+                peso,
+                quantidade
+            },
+            { new: true }
+        ).then(updatedPeixe => {
+            return updatedPeixe;
         }).catch(err => {
-            console.log(err)
-        })
+            console.log(err);
+            throw err;
+        });
     }
 }
 

@@ -8,31 +8,71 @@ const Sensores = mongoose.model("Sensores", sensores);
 class AtualizacoesService {
 
     async analisarSensores() {
-        const dadosSensores = await Sensores.find().sort({ data: -1 }).limit(5);
+        const tiposSensores = ['ph', 'temperatura', 'oxigenacao', 'volume', 'amonia'];
+        const mensagens = [];
+        let temAnomalia = false;
     
-        dadosSensores.forEach(sensor => {
+        for (const tipo of tiposSensores) {
+
+            const ultimoRegistro = await Sensores.findOne({ tipo }).sort({ data: -1 });
+    
+            if (!ultimoRegistro) {
+                mensagens.push(`Nenhum dado encontrado para sensor ${tipo}`);
+                continue;
+            }
+    
             let mensagem = '';
     
-            if (sensor.tipo === 'ph' && (sensor.valor < 6.0 || sensor.valor > 7.5)) {
-                mensagem = `Alerta! Nível de pH fora do ideal!`;
-            } else if (sensor.tipo === 'temperatura' && (sensor.valor < 18 || sensor.valor > 24)) {
-                mensagem = `Alerta! Temperatura fora do ideal!`;
-            } else if (sensor.tipo === 'oxigenacao' && sensor.valor < 5) {
-                mensagem = `Alerta! Nível de oxigênio abaixo do ideal!`;
-                console.log(sensor.valor)
-            } else if (sensor.tipo === 'volume' && (sensor.valor < 150 || sensor.valor > 170)) {
-                mensagem = `Alerta! Volume fora do ideal !`;
-            } else if (sensor.tipo === 'amonia' && (sensor.valor < 0,25 || sensor.valor > 1)) {
-                mensagem = `Alerta! Amonia fora do ideal !`;
+            switch (tipo) {
+                case 'ph':
+                    if (ultimoRegistro.valor < 6.0 || ultimoRegistro.valor > 7.5) {
+                        mensagem = `Alerta! Nível de pH fora do ideal!`;
+                        temAnomalia = true;
+                    }
+                    break;
+                case 'temperatura':
+                    if (ultimoRegistro.valor < 18 || ultimoRegistro.valor > 24) {
+                        mensagem = `Alerta! Temperatura fora do ideal!`;
+                        temAnomalia = true;
+                    }
+                    break;
+                case 'oxigenacao':
+                    if (ultimoRegistro.valor < 5) {
+                        mensagem = `Alerta! Nível de oxigênio abaixo do ideal!`;
+                        temAnomalia = true;
+                    }
+                    break;
+                case 'volume':
+                    if (ultimoRegistro.valor < 150 || ultimoRegistro.valor > 170) {
+                        mensagem = `Alerta! Volume fora do ideal !`;
+                        temAnomalia = true;
+                    }
+                    break;
+                case 'amonia':
+                    if (ultimoRegistro.valor < 0.25 || ultimoRegistro.valor > 1) {
+                        mensagem = `Alerta! Amonia fora do ideal !`;
+                        temAnomalia = true;
+                    }
+                    break;
+                default:
+                    mensagem = `Tipo de sensor '${tipo}' não reconhecido.`;
             }
     
             if (mensagem) {
-                this.registrarAtualizacao(mensagem);
+                mensagens.push(mensagem);
             } else {
-                this.registrarAtualizacao('Nenhuma anomalia detectada');
+                mensagens.push(`Nenhuma anomalia detectada!`);
             }
-        });
+        }
+    
+        if (temAnomalia) {
+            for (const msg of mensagens) {
+                this.registrarAtualizacao(msg);
+            }
+        }
     }
+    
+    
 
     async registrarAtualizacao(mensagem) {
         const novaAtualizacao = new Atualizacoes({ mensagem: mensagem || 'Nenhuma mensagem fornecida', data: new Date() });

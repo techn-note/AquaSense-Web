@@ -6,20 +6,19 @@ const Tanque = mongoose.model("Tanque", tanque)
 class TanqueService {
     //Consultar todos os tanques
     async selectAll() {
-        const tanque = Tanque.find()
-        return tanque
+        const tanques = await Tanque.find()
+        return tanques
     }
 
-    SelectOne(numero) {
-        const tanque = Tanque.findOne({numero: numeor})
-        return tanque
+    SelectOne(id) {
+        return Tanque.findById(id);
     }
-
     // Cadastrar um Novo Tanque
-    Create(nome, capacidade, numero) {
+    Create(nomeTanque, capacidade, numero) {
         const newTanque = new Tanque({
-            nome: nome,
-            capacidade: capacidade
+            nomeTanque: nomeTanque,
+            capacidade: capacidade,
+            numero: numero
         })
         newTanque.save()
     }
@@ -34,15 +33,20 @@ class TanqueService {
     }
 
     // ALTERAR
-    Update(nome, capacidade, numero) {
-        Tanque.findByIdAndUpdate(nome, {
-            nome: nome,
-            capacidade: capacidade,
-            numero: numero
-        }).then(() => {
-            console.log(`Tanque com nome "${nome}" alterado com sucesso`)
+    Update(id, nomeTanque, capacidade, numero) {
+        return Tanque.findByIdAndUpdate(
+            id,
+            {
+                nomeTanque,
+                capacidade,
+                numero
+            },
+            { new: true}
+        ).then(updatedTanque => {
+            return updatedTanque;
         }).catch(err => {
-            console.log(err)
+            console.log(err);
+            throw err;
         })
     }
 }
