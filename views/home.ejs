@@ -44,9 +44,9 @@
         </div>
       </div>
     </div>
-    <div class="col-md-6 d-flex align-items-center justify-content-center flex-column status <%= (mensagem.mensagem != 'Nenhuma anomalia detectada') ? (mensagem.mensagem === 'A verificação do servidor esta fora do ar!') ? 'no-signal' : 'warning' : 'ok' %>">
-      <img src="/imgs/icons/icon-<%= (mensagem.mensagem != 'Nenhuma anomalia detectada') ? (mensagem.mensagem === 'A verificação do servidor esta fora do ar!') ? 'error-cloud' : 'warning' : 'ok' %>.svg" alt="OK">
-      <span class="fs-2 fw-semibold mt-2"><%= (mensagem.mensagem != 'Nenhuma anomalia detectada') ? (mensagem.mensagem === 'A verificação do servidor esta fora do ar!') ? 'Opa! Parece que o Servidor está fora do ar...' : 'Opa! Encontramos algo de errado' : 'Tudo Certo por aqui!' %></span>
+    <div class="col-md-6 d-flex align-items-center justify-content-center flex-column status <%= (mensagem.mensagem != 'Nenhuma anomalia detectada!') ? (mensagem.mensagem === 'A verificação do servidor esta fora do ar!') ? 'no-signal' : 'warning' : 'ok' %>">
+      <img src="/imgs/icons/icon-<%= (mensagem.mensagem != 'Nenhuma anomalia detectada!') ? (mensagem.mensagem === 'A verificação do servidor esta fora do ar!') ? 'error-cloud' : 'warning' : 'ok' %>.svg" alt="OK">
+      <span class="fs-2 fw-semibold mt-2"><%= (mensagem.mensagem != 'Nenhuma anomalia detectada!') ? (mensagem.mensagem === 'A verificação do servidor esta fora do ar!') ? 'Opa! Parece que o Servidor está fora do ar...' : 'Opa! Encontramos algo de errado' : 'Tudo Certo por aqui!' %></span>
     </div>
   </div>
 </div>
