@@ -127,4 +127,58 @@ router.post("/upload-imagem", Auth, upload.single('imagem'), async (req, res) =>
     }
 });
 
+
+router.post("/verificarSenha", Auth, async (req, res) => {
+    const user = req.session.user;
+    const { nome, email, senha } = req.body;
+
+    const senhaAtual = req.body.senhaAtual;
+    const senhaCorreta = await bcrypt.compare(senhaAtual, user.password);
+
+    if (!senhaCorreta) {
+        req.flash('error', 'Senha atual incorreta. Por favor, tente novamente.');
+        return res.redirect('/configuracoes');
+    }
+
+    req.session.dadosAlterarUsuario = { nome, email, senha };
+    res.redirect('/alterarUsuario');
+});
+
+
+// Rota para processar a alteração de usuário após a senha ser verificada
+router.get("/alterarUsuario", Auth, (req, res) => {
+    const dadosAlterarUsuario = req.session.dadosAlterarUsuario;
+    if (!dadosAlterarUsuario) {
+        req.flash('error', 'Por favor, verifique sua senha antes de alterar.');
+        return res.redirect('/configuracoes');
+    }
+
+
+    res.render('confirmarAlteracaoUsuario', { dadosAlterarUsuario });
+});
+
+router.post("/alterarUsuario", Auth, async (req, res) => {
+    const user = req.session.user;
+    const { nome, email, senha } = req.session.dadosAlterarUsuario;
+
+    try {
+
+        let novoHashSenha = user.password;
+        if (senha) {
+            const salt = bcrypt.genSaltSync(10);
+            novoHashSenha = bcrypt.hashSync(senha, salt);
+        }
+
+        await UserService.Update(user._id, nome, email, novoHashSenha);
+
+        req.flash('success', 'Perfil atualizado com sucesso.');
+        delete req.session.dadosAlterarUsuario;
+        res.redirect('/configuracoes');
+    } catch (error) {
+        console.error('Erro ao atualizar perfil:', error);
+        req.flash('error', 'Ocorreu um erro ao atualizar o perfil. Por favor, tente novamente mais tarde.');
+        res.redirect('/configuracoes');
+    }
+});
+
 export default router;
