@@ -1,0 +1,20 @@
+<%- include('partials/head.ejs') %>
+<%- include('partials/header.ejs') %>
+<%- include('partials/flash_message.ejs') %>
+<form id="tanqueForm" action="/cadastroTanque/update/<%= tanque._id %>" method="POST">
+    <div class="form-group">
+        <label for="nomeTanque">Nome do Tanque</label>
+        <input type="text" class="form-control" id="nomeTanque" name="nomeTanque" value="<%= tanque.nomeTanque %>" required>
+    </div>
+    <div class="form-group">
+        <label for="capacidade">Capacidade</label>
+        <input type="number" class="form-control" id="capacidade" name="capacidade" value="<%= tanque.capacidade %>" required>
+    </div>
+    <div class="form-group">
+        <label for="numero">Numero</label>
+        <input type="number" class="form-control" id="numero" name="numero" value="<%= tanque.numero %>" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Alterar Tanque</button>
+    <a href="/cadastroTanque"><button type="button" class="btn btn-secondary me-2">Voltar</button></a>
+</form>
+<%- include('partials/foot.ejs') %>
