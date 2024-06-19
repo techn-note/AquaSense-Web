@@ -1,7 +1,7 @@
 <header class="container p-0">
   <div class="row align-items-center">
-    <div class="col-md-2 d-flex justify-content-center">
-      <a class="nav-link" href="#">
+    <div class="col-md-2 justify-content-center">
+      <a class="navbar-brand" href="/home">
         <img src="../../imgs/image-logo.svg" height="40" alt="AquaSense" />
         <img src="../../imgs/image-logo-text.svg" height="40" alt="AquaSense" />
       </a>
@@ -16,6 +16,24 @@
           <p class="text-primary">Admin</p>
         </div>
       </div>
+
+      <nav class="navbar-responsive">
+        <input type="checkbox" id="active">
+        <label for="active" class="menu-btn"><i class="fas fa-bars"></i></label>
+        <div class="wrapper">
+          <ul>
+            <li><a class="nav-link nav__btn btn <%= (url === " /home") ? 'active' : 'inactive' %> mx-1"
+              href="/home"><i class="fas fa-home"></i> Início</a></li>
+            <li><a class="nav-link nav__btn btn <%= (url === " /dados") ? 'active' : 'inactive' %> mx-1"
+              href="/dados"><i class="fas fa-chart-line"></i> Dados</a></li>
+            <li><a class="nav-link nav__btn btn <%= (url === " /configuracoes") ? 'active' : 'inactive' %> mx-1"
+              href="/configuracoes"><i class="fas fa-cog"></i> Configurações</a></li>
+            <li><a class="nav-link nav__btn btn inactive mx-1" href="/logout"><i class="fas fa-sign-out-alt"></i>
+              Sair</a></li>
+          </ul>
+        </div>
+      </nav>
+
       <nav class="navbar">
         <a class="nav-link nav__btn btn btn-primary <%= (url === " /home") ? 'active' : 'inactive' %> mx-1"
           href="/home"><i class="fas fa-home"></i> Início</a>

@@ -3,7 +3,7 @@
 
 <div class="container my-4">
     <div class="row modal__main p-4 justify-content-center">
-        <div class="col-md-6 d-flex flex-column">
+        <div class="col-md-6 d-flex modal__family flex-column">
             <div class="row text-center my-4">
                 <h1 class="modal__main__title fw-semibold">Família</h1>
             </div>
@@ -16,7 +16,7 @@
                 <p class="line"></p>
             </div>
         </div>
-        <div class="col-md-6 d-flex flex-column align-items-center border-start border-primary border-4">
+        <div class="modal__profile col-md-6 d-flex flex-column align-items-center">
             <div class="config__profile rounded-circle mb-3">
                 <img src="<%= user.image %>" onclick="mostrarModal('#editModal')" class="config__profile__image rounded-circle align-self-center" alt="Profile">
                 <i class="fas fa-edit edit-icon" ></i>

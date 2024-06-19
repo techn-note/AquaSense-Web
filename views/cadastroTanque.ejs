@@ -5,7 +5,7 @@
     <h1 class="text-center">Cadastro de Tanques</h1>
 
     <!-- Formulário de Adição de tanques -->
-    <form id="tanqueForm" action="/cadastroTanque/new" method="POST">
+    <form id="tanqueForm" action="/cadastroTanque/new" class="form" method="POST">
         <div class="form-group">
             <label for="nometanque">Nome do tanque</label>
             <input type="text" class="form-control" id="nometanque" name="nomeTanque" required>
@@ -23,26 +23,28 @@
 
     <!-- Tabela de Tanques -->
     <h2 class="text-center mt-5">Lista de Tanques</h2>
-    <table class="table table-bordered mt-3">
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Capacidade</th>
-                <th>Número</th>
-            </tr>
-        </thead>
-        <tbody id="TanqueTableBody">
-            <% tanques.forEach(tanques => { %>
+    <div class="table-responsive">
+        <table class="table table-bordered mt-3">
+            <thead>
                 <tr>
-                    <td><%= tanques.nomeTanque %></td>
-                    <td><%= tanques.capacidade %></td>
-                    <td><%= tanques.numero %></td>
-                    <td><a class="btn" style="color: orange;" href="/cadastroTanque/edit/<%= tanques._id %>">Editar</a></td>
-                    <td><a class="btn" style="color: red;" href="/cadastroTanque/delete/<%= tanques._id %>">Excluir</a></td>
+                    <th>Nome</th>
+                    <th>Capacidade</th>
+                    <th>Número</th>
                 </tr>
-                <% }) %>
-            </tbody>
-    </table>
+            </thead>
+            <tbody id="TanqueTableBody">
+                <% tanques.forEach(tanques => { %>
+                    <tr>
+                        <td><%= tanques.nomeTanque %></td>
+                        <td><%= tanques.capacidade %></td>
+                        <td><%= tanques.numero %></td>
+                        <td><a class="btn" style="color: orange;" href="/cadastroTanque/edit/<%= tanques._id %>">Editar</a></td>
+                        <td><a class="btn" style="color: red;" href="/cadastroTanque/delete/<%= tanques._id %>">Excluir</a></td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+        </table>
+    </div>
 </div>
 </body>
 </html>

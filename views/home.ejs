@@ -1,10 +1,10 @@
 <%- include('partials/head.ejs') %>
 <%- include('partials/header.ejs') %>
 <%- include ("partials/flash_message.ejs") %>
-<div class="container my-4">
+<div class="container mt-4">
   <div class="row modal__main justify-content-center">
     <div class="col-md-6">
-      <div class="px-5">
+      <div class="atualizacoes__main">
         <div class="row text-center my-4">
           <h1 class="modal__main__title fw-semibold">Atualizações</h1>
         </div>
@@ -15,12 +15,12 @@
           <div class="row text-center my-4">
             <h2>Caracteristicas Gerais</h1>
           </div>
-          <div class="d-flex">
+          <div class="general-characteristics__main d-flex">
             <div class="general-characteristics__item general-characteristics__item--ammonia p-3">
               <span class="general-characteristics__label text-start d-flex align-items-center"><img src="/imgs/icons/icon-ammonia.svg" class="me-2" alt="icon-ammonia"> <h4 class="d-inline-block m-0 me-2">Amônia</h4></span>
               <span class="general-characteristics__value"><%= amonia ? amonia.valor + '%' : '--' %></span>
             </div>
-            <div class="general-characteristics__item general-characteristics__item--temperature p-3 mx-2">
+            <div class="general-characteristics__item general-characteristics__item--temperature p-3">
               <span class="general-characteristics__label text-start d-flex align-items-center"><img src="/imgs/icons/icon-temperature.svg" class="me-2" alt="icon-temperature"> <h4 class="d-inline-block m-0">Temp</h4></span>
               <span class="general-characteristics__value"><%= temperatura ? temperatura.valor + '°C' : '--'%></span>
             </div>
@@ -31,7 +31,7 @@
           </div>
         </div>
       </div>
-      <div class="d-flex justify-content-center p-3">
+      <div class="water-level__main d-flex justify-content-center p-3">
         <div class="water-level mt-3 mx-2">
           <span class="water-level__label text-start"><img src="/imgs/icons/icon-bar.svg" class="me-2" alt="icon-bar">Nível Da Água</span>
           <span class="level__value mt-1 fs-2 fw-bold"><%= volume ? volume.valor + ' Litros' : '--' %></span>

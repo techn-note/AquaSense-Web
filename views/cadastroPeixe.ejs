@@ -5,7 +5,7 @@
     <h1 class="text-center">Cadastro de Peixes</h1>
 
     <!-- Formulário de Adição de Peixes -->
-    <form id="peixeForm" action="/cadastroPeixe/new" method="POST">
+    <form id="peixeForm" action="/cadastroPeixe/new" class="form" method="POST">
         <div class="form-group">
             <label for="nomePeixe">Nome do Peixe</label>
             <input type="text" class="form-control" id="nomePeixe" name="nomePeixe" required>
@@ -31,30 +31,32 @@
 
     <!-- Tabela de Peixes -->
     <h2 class="text-center mt-5">Lista de Peixes</h2>
-    <table class="table table-bordered mt-3">
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Idade</th>
-                <th>Espécie</th>
-                <th>Peso (kg)</th>
-                <th>Quantidade</th>
-            </tr>
-        </thead>
-        <tbody id="peixeTableBody">
-            <% peixes.forEach(peixe => { %>
+    <div class="table-responsive">
+        <table class="table table-bordered mt-3">
+            <thead>
                 <tr>
-                    <td><%= peixe.nomePeixe %></td>
-                    <td><%= peixe.idade %></td>
-                    <td><%= peixe.especie %></td>
-                    <td><%= peixe.peso %></td>
-                    <td><%= peixe.quantidade %></td>
-                    <td><a class="btn" style="color: orange;" href="/cadastroPeixe/edit/<%= peixe._id %>">Editar</a></td>
-                    <td><a class="btn" style="color: red;" href="/cadastroPeixe/delete/<%= peixe._id %>">Excluir</a></td>
+                    <th>Nome</th>
+                    <th>Idade</th>
+                    <th>Espécie</th>
+                    <th>Peso (kg)</th>
+                    <th>Quantidade</th>
                 </tr>
-                <% }) %>
-            </tbody>
-    </table>
+            </thead>
+            <tbody  id="peixeTableBody">
+                <% peixes.forEach(peixe => { %>
+                    <tr>
+                        <td><%= peixe.nomePeixe %></td>
+                        <td><%= peixe.idade %></td>
+                        <td><%= peixe.especie %></td>
+                        <td><%= peixe.peso %></td>
+                        <td><%= peixe.quantidade %></td>
+                        <td><a class="btn" style="color: orange;" href="/cadastroPeixe/edit/<%= peixe._id %>">Editar</a></td>
+                        <td><a class="btn" style="color: red;" href="/cadastroPeixe/delete/<%= peixe._id %>">Excluir</a></td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+        </table>
+    </div>
 </div>
 </body>
 </html>
